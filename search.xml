@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>C语言学习笔记</title>
+    <url>/posts/2620.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><div class="note success simple"><p>一些在学习C语言过程中做的笔记</p>
+</div>
+<div class="note info simple"><p>课程链接：<a href="https://www.icourse163.org/learn/ZJU-199001">程序设计入门——C语言</a></p>
+</div>
+
+    <div id="aplayer-oXPvHsHy" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="2013579959" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+<hr>
+<ol>
+<li><p>出现在 <code>scanf()</code> 中的东西是<strong>程序希望你输入的东西</strong> 而不是程序将要输出的东西</p>
+</li>
+<li><p><code>const</code> 是一个修饰符，加在 <code>int</code> 的前面，用来给这个变量增加一个 <strong>不变</strong> ( const )的属性。</p>
+<p>这个 const 的属性一旦被初始化就不能再修改了。示例：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">const</span> <span class="token keyword">int</span> AMOUNT <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> change <span class="token operator">=</span> AMOUNT <span class="token operator">-</span> price<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>任意一个整数做加减乘除，结果依然是整数。这是一段示例代码：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这段代码的输出将是 <code>3</code> 而不是 <code>3.333333....</code></p>
+<p>如果想要得到 <code>3.33333333...</code> 的输出，那么代码应该修改为：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f"</span><span class="token punctuation">,</span><span class="token number">10.0</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>在C中，<code>10</code> 与 <code>10.0</code> 是完全不同的两个数</p>
+<p><code>10</code> 是<strong>整数</strong> ，<code>10.0</code> 是<strong>浮点数</strong>。</p>
+<blockquote>
+<p>浮点数就是<strong>带小数点的数值</strong>。浮点这个词的本意就是指小数点是浮动的，是计算机内部表达非整数（包含分数和无理数）的一种方式。另一种方式叫做定点数，不过在C语言中你不会遇到定点数。人们借用浮点数这个词来表达所有的带小数点的数。</p>
+</blockquote>
+</li>
+<li><p>当浮点数和整数放到一起运算时，C会<strong>将整数转换成浮点数</strong>，然后进行浮点数的运算。</p>
+</li>
+<li><p>整数</p>
+<ul>
+<li><p>int</p>
+</li>
+<li><p><code>printf(&quot;%d&quot;,...);</code></p>
+</li>
+<li><p><code>scanf(&quot;%d&quot;,...);</code></p>
+</li>
+</ul>
+<p>浮点数</p>
+<ul>
+<li><p>double</p>
+</li>
+<li><p><code>printf(&quot;&amp;f&quot;,...);</code></p>
+</li>
+<li><p><code>scanf(&quot;&amp;lf&quot;,...);</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>表达式</strong> 是一系列运算符和算子的组合，用来计算一个值。</p>
+<ul>
+<li><p>运算符（operator）是指<strong>进行运算的动作</strong>，比如加法运算符“＋”，减法运算符“-”。</p>
+</li>
+<li><p>算子（operand）是指<strong>参与运算的值</strong>，这个值可能是常数，也可能是变量，还可能是一个方法的返回值</p>
+</li>
+<li><p>例如一个表达式：</p>
+<pre class="line-numbers language-none"><code class="language-none">a &#x3D; b + 5<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在这个式子中，“ <strong>&#x3D;</strong> ” 和 “ <strong>+</strong> ” 是运算符，<strong>a、b、5</strong> 是算子</p>
+</li>
+</ul>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="center">四则运算</th>
+<th align="center">C符号</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">加</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">减</td>
+</tr>
+<tr>
+<td align="center">×</td>
+<td align="center">*</td>
+<td align="center">乘</td>
+</tr>
+<tr>
+<td align="center">÷</td>
+<td align="center">&#x2F;</td>
+<td align="center">除</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">%</td>
+<td align="center">取余</td>
+</tr>
+<tr>
+<td align="center">()</td>
+<td align="center">()</td>
+<td align="center">括号</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>如下是一段计算时间差的代码，用到了第8点的四则运算。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> hour1<span class="token punctuation">,</span>minute1<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> hour2<span class="token punctuation">,</span>minute2<span class="token punctuation">;</span>
+    
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入较早的时间（小时 分钟）："</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>hour1<span class="token punctuation">,</span><span class="token operator">&amp;</span>minute1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入较晚的时间（小时 分钟）："</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>hour2<span class="token punctuation">,</span><span class="token operator">&amp;</span>minute2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">int</span> t1 <span class="token operator">=</span> hour1 <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> minute1<span class="token punctuation">;</span> <span class="token comment">// 转换为分钟单位</span>
+    <span class="token keyword">int</span> t2 <span class="token operator">=</span> hour2 <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> minute2<span class="token punctuation">;</span> <span class="token comment">//如上</span>
+    
+    <span class="token keyword">int</span> t <span class="token operator">=</span> t2 <span class="token operator">-</span> t1<span class="token punctuation">;</span>
+    
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"时间差是%d小时%d分钟。"</span><span class="token punctuation">,</span>t<span class="token operator">/</span><span class="token number">60</span><span class="token punctuation">,</span>t<span class="token operator">%</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// t/60是小时部分，t%60是分钟部分</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>运算符优先级</p>
+<table>
+<thead>
+<tr>
+<th align="center">优先级</th>
+<th align="center">运算符</th>
+<th align="center">运算</th>
+<th align="center">结合关系</th>
+<th align="center">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">+</td>
+<td align="center">单目<strong>不变</strong></td>
+<td align="center">自右向左</td>
+<td align="center">a*(+b)</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">-</td>
+<td align="center">单目<strong>取负</strong></td>
+<td align="center">自右向左</td>
+<td align="center">a*(-b)</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">*</td>
+<td align="center">乘</td>
+<td align="center">自左向右</td>
+<td align="center">a*b</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">&#x2F;</td>
+<td align="center">除</td>
+<td align="center">自左向右</td>
+<td align="center">a&#x2F;b</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">%</td>
+<td align="center">取余</td>
+<td align="center">自左向右</td>
+<td align="center">a%b</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">+</td>
+<td align="center">加</td>
+<td align="center">自左向右</td>
+<td align="center">a+b</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">-</td>
+<td align="center">减</td>
+<td align="center">自左向右</td>
+<td align="center">a-b</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">&#x3D;</td>
+<td align="center">赋值</td>
+<td align="center">自右向左</td>
+<td align="center">a&#x3D;b</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>在 <code>a+b</code> 中，运算符 <strong>&#x3D;</strong> 的两边有两个算子，说明这是双目运算</p>
+<p>像 <code>-a</code> 这样运算符两边只有一个算子的叫做单目运算</p>
+</blockquote>
+</li>
+<li><p>对于C语言来说，<strong>赋值（&#x3D;）</strong>也是一个运算符</p>
+<ul>
+<li>赋值也是运算，也有结果</li>
+<li><code>a=6</code> 的结果是a被赋予的值，也就是6</li>
+<li><code>a=b=6</code> –&gt; <code>a=(b=6)</code></li>
+</ul>
+</li>
+<li><p>不推荐使用 <strong>嵌套式赋值</strong>。示例：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> a <span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> b<span class="token punctuation">;</span>
+<span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">+</span><span class="token punctuation">(</span>b<span class="token operator">=</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">result <span class="token operator">=</span> <span class="token punctuation">(</span>result <span class="token operator">=</span> result <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">6</span> <span class="token operator">*</span> <span class="token punctuation">(</span>result <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>不利于阅读</li>
+<li>容易出错</li>
+</ul>
+<p>这种表达式太复杂，不利于阅读和理解，容易造成读程序时的误解。所以要避免写出这样的复杂表达式。这个表达式应该被拆成若干个表达式，然后以明显的正确的顺序来进行计算。</p>
+</li>
+<li><p>程序表达的是<strong>顺序执行的动作</strong>，而不是关系。</p>
+</li>
+<li><p><strong>复合赋值</strong></p>
+<ul>
+<li>5个算数运算符（+ - * &#x2F; %）可以和赋值运算符（&#x3D;）结合起来，形成复合赋值运算符。</li>
+<li><code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code></li>
+<li><code>total += 5</code> 等价于 <code>total = total + 5</code></li>
+<li>两个运算符中间不要有空格</li>
+</ul>
+</li>
+<li><p><strong>递增&#x2F;递减运算符</strong></p>
+<ul>
+<li>“＋＋”和“–”是两个很特殊的运算符，它们是单目运算符。这个算子必须是变量。</li>
+<li>这两个运算符分别叫做<strong>递增</strong>和<strong>递减</strong>运算符，他们的作用就是给这个变量<strong>＋1</strong>或者 <strong>-1</strong>。</li>
+<li>下面三个表达式都是等价的：<ul>
+<li><code>count++</code>;</li>
+<li><code>count += 1;</code></li>
+<li><code>count = count + 1;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>++和–可以放在变量的前面，叫做前缀形式；也可以放在变量的后面，叫做后缀形式。</p>
+</li>
+<li><p><code>++i</code>，<code>--i</code>（在使用 i 之前，先使 i 加（减）1）；<code>i++</code>，<code>i--</code>（在使用 i 之后，使 i 的值加（减）1）。</p>
+<p>乍一看，<code>++i</code> 和 <code>i++</code> 的作用相当于 <code>i=i+1</code>。但是 <code>++i</code> 和 <code>i++</code> 的不同之处在于 <code>++i</code> 是先执行 <code>i=i+1</code> 后，再使用 i 的值；而 <code>i++</code> 是先使用 i 的值之后，再执行 <code>i=i+1</code>。</p>
+<p>可以这么理解记忆：自增自减都是从左往右运算的，那么<code>i++</code> 就应该是先用 <code>i</code> 的值，再去给它自身+1；以此类推，<code>++i</code> 就应该是先给它自身+1，再去使用 <code>i</code> 的值。</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>运算</th>
+<th>表达式的值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count++</td>
+<td>给count加1</td>
+<td>count原来的值</td>
+</tr>
+<tr>
+<td>++count</td>
+<td>给count加1</td>
+<td>count加1后的值</td>
+</tr>
+<tr>
+<td>count–</td>
+<td>给count减1</td>
+<td>count原来的值</td>
+</tr>
+<tr>
+<td>–count</td>
+<td>给count减1</td>
+<td>count减1后的值</td>
+</tr>
+</tbody></table>
+</li>
+<li><blockquote>
+<p> 根据比较的结果，决定做、还是不做某些动作，就要用到if语句。</p>
+<p> 一个基本的if语句由一个关键字if开头，跟上在括号里的一个表示条件的逻辑表达式，然后是一对大括号“{}”之间的若干条语句。如果表示条件的逻辑表达式的结果为true，那么就执行后面跟着的这对大括号中的语句，否则就跳过这些语句不执行，而继续下面的其他语句。</p>
+</blockquote>
+</li>
+<li><p><strong>关系运算符</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&#x3D;&#x3D;</td>
+<td align="center">相等</td>
+</tr>
+<tr>
+<td align="center">!&#x3D;</td>
+<td align="center">不相等</td>
+</tr>
+<tr>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">&gt;&#x3D;</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">&lt;&#x3D;</td>
+<td align="center">小于等于</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>关系运算的结果</strong></p>
+<ul>
+<li>当两个值的关系复合关系运算符的预期时，关系运算的结果为整数<strong>1</strong>，否则为整数<strong>0</strong>。</li>
+<li><code>printf(&quot;%d\n&quot;,5==3);</code> 会打印 <code>0</code></li>
+<li><code>printf(&quot;%d\n&quot;,5&gt;3);</code> 会打印 <code>1</code></li>
+<li><code>printf(&quot;%d\n&quot;,5&lt;=3);</code> 会打印 <code>0</code></li>
+</ul>
+</li>
+<li><p>关系运算符的优先级：</p>
+<p><strong>所有的关系运算符的优先级比算术运算符的低，但是比赋值运算的高</strong>。</p>
+<ul>
+<li><p>例如 <code>7 &gt;= 3 + 4</code> ，<code>+</code> 比 <code>&gt;=</code> 的优先级高，所以在这个表达式中先计算 <code>3+4</code> 再比较 <code>7 &gt;= 3 + 4</code></p>
+</li>
+<li><p>通过这段代码可以验证是否<strong>先算 算数运算符，后算 关系运算符</strong>。</p>
+</li>
+<li><pre><code class="c">#include&lt;stdio.h&gt;
+int main()&#123;
+    printf(&quot;%d&quot;,7&gt;=3+4);
+    return 0;
+&#125;
+<pre class="line-numbers language-none"><code class="language-none">
+    - 编译运行后，结果为 &#96;1&#96;。说明 **关系运算符的优先级比算术运算符的低**。
+
+    判断是否相等的 **&#x3D;&#x3D;** 和 **!&#x3D;** 的优先级比其他的关系运算符的低，而连续的关系运算是从左到右进行的。
+
+    - &#96;5 &gt; 3 &#x3D;&#x3D; 6 &gt; 4&#96; 输出为 &#96;1&#96;
+    - &#96;6 &gt; 5 &gt; 4 &#96; 输出为 &#96;0&#96; 因为是先算&#96;6 &gt; 5&#96; ，结果是 &#96;1&#96;，然后算 &#96;1 &gt; 4&#96; 结果为 &#96;0&#96;
+    - （两条示例分别印证了上面 &lt;span class&#x3D;&quot;heimu&quot; title&#x3D;&quot;悲&quot;&gt;上面。。上面的什么呢 想不出来（悲&lt;&#x2F;span&gt;
+    
+23. **注释**
+
+    注释（comment）插入在程序代码中，用来向读者提供解释信息。它们对于程序的功能没有任何影响，但是往往能使得程序更容易被人类读者理解。
+
+    可用：
+
+    - &#96;&#x2F;&#x2F;&#96;  \***C99独有**
+    - &#96;&#x2F;* *&#x2F;&#96;
+      -  延续数行的注释，要用多行注释的格式来写。
+      - 多行注释由一对字符序列 &#96;&#x2F;*&#96; 开始，而以 &#96;*&#x2F;&#96; 结束。也可以用于一行内的注释。
+      - &#96;int ak&#x3D;47 &#x2F;*36*&#x2F; ,y&#x3D;9;&#96; 
+      - 单行注释 **C99独有**
+
+24. 在C语言中，每个语句通常以分号（;）结束。但是，如果你使用了**大括号** &#96;&#123;&#125;&#96; 来创建一个代码块，那么块内的最后一个语句后面的分号**是可选的**。这是因为大括号**定义了一个语句块，它本身就是一条语句**，所以不需要在块的末尾加分号。
+
+25. 一个基本的if语句由一个关键字 &#96;if&#96; 开头，跟上在括号里的一个表示条件的逻辑表达式，然后是一对大括号“｛｝”之间的若干条语句。
+
+    如果表示条件的逻辑表达式的结果不是零，那么就执行后面跟着的这对大括号中的语句，否则就跳过这些语句不执行，而继续下面的其他语句。
+
+    示例：
+
+    &#96;&#96;&#96;c
+    #include&lt;stdio.h&gt;
+    int main()&#123;
+        if (xxxx)&#123;
+            xxxxxxx; &#x2F;&#x2F; 这一句是if语句的一部分
+        &#125; else &#123;
+            xxxxxxx; &#x2F;&#x2F; 这一句是else语句的一部分
+        &#125;
+        return 0;
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>if语句这一行结束的时候并没有表示语句结束的 <code>;</code> ，而后面的赋值语句写在if的下一行，并且缩进了，在这一行结束的时候有一个表示语句结束的 <code>;</code>。这表明这条赋值语句是if语句的一部分，if语句拥有和控制这条赋值语句，决定它是否要被执行。</p>
+<p>示例：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>xxxx<span class="token punctuation">)</span>
+        xxxxxxxx<span class="token punctuation">;</span> <span class="token comment">// 这一句是if语句的一部分</span>
+    <span class="token keyword">else</span>
+        xxxxxxx<span class="token punctuation">;</span> <span class="token comment">// 这一句是else语句的一部分</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><code>while</code> 循环就和 <code>if</code> 一样，条件满足就不断做后面的句子。</p>
+</li>
+<li><p><code>while</code> 循环的流程图：</p>
+<p><img src="/img/note-1.png" alt="while循环"></p>
+<p><strong>循环体内要有改变条件的机会，否则就会一直进行循环。</strong></p>
+</li>
+<li><p>如果我们把while翻译作“当”，那么一个while循环的意思就是：<strong>当条件满足时，不断地重复循环体内的语句</strong>。</p>
+<p>循环执行之前判断是否继续循环，所以<strong>有可能循环一次也没有被执行</strong></p>
+<p><strong>条件成立</strong> 是循环继续的条件。</p>
+</li>
+<li><p>我们可以通过在程序的适当位置插入 <code>printf()</code> 来查看各个变量的值而不使用调试。例如下面的代码：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> x <span class="token punctuation">;</span>
+	<span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+	x <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span> x <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		n<span class="token operator">++</span><span class="token punctuation">;</span>
+		x <span class="token operator">/=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"x=%d,n=%d\n"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"位数为%d位。\n"</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>do-while循环</strong> ： 在进入循环的时候不做检查，而是在执行完一轮循环体的代码之后，再来检查循环的条件是否满足，如果满足则继续下一轮循环，不满足则结束循环。</p>
+<p>流程图如下：</p>
+<p><img src="/img/note-2.png" alt="do-while循环"></p>
+<p>do-while其实就是，<strong>不管你条件成不成立，先做循环内的句子，再去判断条件是否成立</strong></p>
+<p>do-while循环和while循环很像，区别是在 <strong>循环体执行结束的时候才来判断条件</strong>。也就是说，无论如何，循环 <strong>都会执行至少一遍</strong>，然后再来判断条件。与while循环相同的是，条件满足时执行循环，条件不满足时结束循环。</p>
+<p>格式：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">do</span>
+<span class="token punctuation">&#123;</span>
+    xxxxxxx<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">while</span> <span class="token punctuation">(</span> 条件 <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 注意要加分号</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>for 循环</strong> ：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span> 初始动作 <span class="token punctuation">;</span> 循环条件 <span class="token punctuation">;</span> 每轮循环要做的动作 <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    xxxxxxx<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>for循环像一个<strong>计数循环</strong>：设定一个计数器，<strong>初始化</strong>它，然后在计数器<strong>到达某值之前</strong>，<strong>重复执行循环体</strong>，而每执行一轮循环，计数器值以一定步进进行调整，比如加1或者减1</p>
+<p>例如</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>    i<span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span>   i<span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<span class="token comment">//     ^初始化   ^循环条件  ^ 每轮循环要做的动作</span>
+   
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>for可以理解为 <strong>对于</strong>。比如说，对于以下代码</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span> count<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span> count<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">;</span> count<span class="token operator">--</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>可以理解为</p>
+<blockquote>
+<p>对于一开始的 <strong>count＝10</strong>，<strong>当 count＞0 时</strong>，重复做循环体，每一轮循环<strong>在做完循环体内语句后</strong>，使得 <strong>count–</strong> 。”</p>
+</blockquote>
+</li>
+<li><p><strong>判断或循环</strong>后面都必须跟一个循环体。</p>
+</li>
+<li><p>做 <strong>求和</strong> 的程序时，记录结果的变量应该初始化为 <strong>0</strong>，而做 <strong>求积</strong> 的变量时，记录结果的变量应该初始化为 <strong>1</strong></p>
+</li>
+<li><p>for循环其实是等价于while循环的。例如：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    fact <span class="token operator">*=</span> i<span class="token punctuation">;</span>
+    i<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>等价于</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// [int i=1] 这一段仅适用于C99</span>
+    fact <span class="token operator">*=</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>任何一个for循环都可以改写为一个while循环。</p>
+</li>
+<li><p>以C语言为例，标准的 <code>for</code> 循环是这样的：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span>初始化表达式<span class="token punctuation">;</span> 循环条件表达式<span class="token punctuation">;</span> 迭代表达式<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 循环体</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>初始化表达式：通常用于 <strong>初始化一个或多个循环控制变量</strong> ，这个表达式只在循环开始前执行一次。</li>
+<li>循环条件表达式：在每次迭代的开始处进行评估，如果为真，则执行循环体中的代码；如果为假，则循环结束。</li>
+<li>迭代表达式：在循环体的代码执行之后，对循环控制变量进行更新。</li>
+</ul>
+<p>在某些情况下，这三个表达式都是可以省略的，但至少需要保留分号分隔符。例如：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 循环体</span>
+        i<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 循环体内需要确保循环条件最终会变为假，否则会形成无限循环</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在上面的例子中，初始化表达式被移动到了循环外，而迭代表达式在循环体内完成。</p>
+<p>但是，如果 <strong>省略了循环条件表达式</strong> ，默认的条件是 <strong>真</strong> ，这会导致一个 <strong>无限循环</strong> ，除非在循环体内部有<code>break</code>语句或者修改循环控制变量来退出循环：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 这将创建一个无限循环</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment">// 使用break语句来退出循环</span>
+    <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 循环体</span>
+    i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>此条来自于 ChatGLM</p>
+</blockquote>
+</li>
+<li><p>三种循环的流程图：</p>
+<div class="tabs" id=""><ul class="nav-tabs"><button type="button" class="tab  active" data-href="-1">while循环</button><button type="button" class="tab " data-href="-2">do-while循环</button><button type="button" class="tab " data-href="-3">for循环</button></ul><div class="tab-contents"><div class="tab-item-content active" id="-1"><p><img src="/img/note-1.png" alt="while循环"></p></div><div class="tab-item-content" id="-2"><p><img src="/img/note-2.png" alt="do-while循环"></p></div><div class="tab-item-content" id="-3"><p><img src="/img/note-3.png" alt="for循环"></p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单相思</title>
+    <url>/posts/29930.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script>
+    <div id="aplayer-AZeBcdcp" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="2118204311" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+
+<p>​	我和她的第一次相遇是在某个书法兴趣班。第一次遇见的情景已经记不清了，只记得当时她专攻隶书，练的时间也比我长。我已经忘了我们是如何变得要好的，也许是因为小学是同一个学校？还是我们练字的时间段都是相同的？或许二者都有吧。</p>
+<p>​	慢慢地熟络之后，我和她交换了联系方式，我们的互动也多了起来。她会给我安利好看的电视剧，我会和她分享生活中的趣事；她有时也会和我斗斗图，交换一下表情包库存，我也会向她分享最近拍的美景……太多太多了。</p>
+<p>​	记得有一段时间，我和她练字完一起回家。起因可能是她跳脸嘲讽还是怎么，我说“那等你练完字你给我等着”。结果一路上打打闹闹，夕阳照在我们的身上，我觉得世界上最幸福的事情不过如此了。我们聊学习，我们聊生活，我们聊所有能聊的。后来每次有机会，我都会等她一起走。虽然只有短短的一段一起走的路程，虽然这么走对我来说是绕远路，但是我依旧这么做了。</p>
+<p>​	我突然发现…我好像喜欢上她了。</p>
+<p>​	她长得很漂亮，一张鹅蛋脸，一双水汪汪的眼睛，性格温柔，成绩也很好。她对于我就像庄颜对于罗辑，她满足了我对初恋情人的一切幻想。她是我的白月光。</p>
+<p>​	记得我们最后一次一起外出是22年1月17号。那天老师带我们这些学生去一个小区里面给业主送春联，我和她有幸被安排到了同一座车上。我当时激动万分，哇，我是修了什么功德才能换来这样的好事啊。在写春联的时候，我和她一直在聊天，越聊越开心，甚至在老师拍下来的视频里面都能看到我那明显上扬的嘴角。我觉得那天是我最幸福的一天，只要能和她在一起，那我就是最幸福的。</p>
+<p>​	我以为生活能一直这么平静下去，等到某一天能和她表白心意。可惜，造化弄人。22年3月份，我被确诊霍奇金淋巴瘤，迫不得已休学治疗。在治疗期间，我无聊至极，没有什么人能聊天。原来的同学们要上课，没时间回消息，而且当时我并不想把我得病这个消息告诉他们让他们担心，所以我就开始找她聊天。</p>
+<p>​	她当时是初二下学期，正在准备生地会考。当我在清明节假期那段时间给她发消息，说要不要地理笔记，她说“要要要，多谢了，4月17要期中考试我不想挂科”。当时看到她说的话后还挺高兴的，因为我能帮到她。但是我那本地理笔记字写得挺烂的，得重新抄一遍才看得清。我把情况和她说了，她说这样会不会太麻烦了，我说没事没事，就当练字了。但是可能是拖延症发作吧，等到了她考试那天我还是没有完成，更何况当天我在做化疗，整个人都神志不清，也无法及时和她说明情况。后面虽然说明情况了但是那又有什么用呢。已经结束咧（悲</p>
+<p>​	自从这一次后，她就再也没有理过我了。她会给我空间点赞但是不会给我回消息，搞得我道歉都只能空间喊话。慢慢地，她连空间也不看我的了，她似乎在刻意躲避我。有一次，我看到我和她的共同好友发了一条空间，看到了她的点赞，我同时发的那一条却千等万等也没有等来她的关注。</p>
+<p>​	不知道是哪一天了，当我日常给她发一条消息时，发现发送失败。那红色的感叹号如同一把尖刀刺进了我的心。我知道，可能是我太烦了…但是我无法理解她的做法。如果觉得我烦可以跟我说一声，告诉我发了也不会回，或者让我别发…唉。我和她自此，形同陌路。</p>
+<p>​	后来我托一个朋友想她带了一句话，问她我加她好友怎么拒绝申请了。她回复了冰冷的五个字 “告诉他，不加”。 我悬着的心终于死了。</p>
+<p>​	她去年中考考了787分，挺不错的。我和她的距离越来越大了。终究只是单相思，唉。</p>
+<p>​	希望你未来能够变得越来越好，再见。</p>
+]]></content>
+      <categories>
+        <category>碎碎念</category>
+      </categories>
+      <tags>
+        <tag>碎碎念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu重装记录</title>
+    <url>/posts/22765.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>记录一下服务器重装过程。</p>
+
+    <div id="aplayer-gSKcsNbT" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="2034974673" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+<h2 id="System-Info"><a href="#System-Info" class="headerlink" title="System Info"></a>System Info</h2><p><strong>OS</strong>: <strong>Ubuntu 22.04.4 LTS x86_64</strong> </p>
+<h2 id="挂载数据盘"><a href="#挂载数据盘" class="headerlink" title="挂载数据盘"></a>挂载数据盘</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /data <span class="token operator">&amp;&amp;</span> <span class="token function">mount</span> /dev/sdb1 /data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /data <span class="token operator">&amp;&amp;</span> <span class="token function">mount</span> /dev/sda1 /data<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p>更换为清华的源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s@//.*archive.ubuntu.com@//mirrors.tuna.tsinghua.edu.cn@g'</span> /etc/apt/sources.list
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s/security.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g'</span> /etc/apt/sources.list
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s/http:/https:/g'</span> /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>更新软件包：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> update <span class="token parameter variable">-y</span> <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> upgrade <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="将语言设置为中文"><a href="#将语言设置为中文" class="headerlink" title="将语言设置为中文"></a>将语言设置为中文</h2><p>生成简体中文环境支持文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">locale-gen zh_CN.UTF-8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装语言包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> language-pack-zh-hans language-pack-zh-hant <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装字符集</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/share/locales <span class="token operator">&amp;&amp;</span> ./install-language-pack zh_CN <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装中文字体</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> fonts-noto-cjk fonts-noto-color-emoji <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将语言配置写入 <code>/etc/profile</code> 文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'$a export LANG=zh_CN.UTF-8\nexport LANGUAGE=zh_CN:zh'</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使配置生效</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>验证是否生效</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">locale<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果生效了，终端应该会有如下的输出：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable"><span class="token environment constant">LANG</span></span><span class="token operator">=</span>zh_CN.UTF-8
+<span class="token assign-left variable"><span class="token environment constant">LANGUAGE</span></span><span class="token operator">=</span>zh_CN:zh
+<span class="token assign-left variable">LC_CTYPE</span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_NUMERIC</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_TIME</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable">LC_COLLATE</span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_MONETARY</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable">LC_MESSAGES</span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_PAPER</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_NAME</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_ADDRESS</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_TELEPHONE</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_MEASUREMENT</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_IDENTIFICATION</span></span><span class="token operator">=</span><span class="token string">"zh_CN.UTF-8"</span>
+<span class="token assign-left variable"><span class="token environment constant">LC_ALL</span></span><span class="token operator">=</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="更改时区"><a href="#更改时区" class="headerlink" title="更改时区"></a>更改时区</h2><p>修改时区为上海</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">timedatectl set-timezone Asia/Shanghai<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生效配置</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart systemd-timesyncd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="软件包相关"><a href="#软件包相关" class="headerlink" title="软件包相关"></a>软件包相关</h2><p>安装软件包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> neofetch <span class="token function">zip</span> <span class="token function">unzip</span> openjdk-17-jre-headless dotnet-runtime-8.0 python3-pip python3.10-venv libgl1-mesa-glx <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>删除软件包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> autoremove <span class="token parameter variable">-y</span> <span class="token parameter variable">--purge</span> needrestart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="MCSManager-相关"><a href="#MCSManager-相关" class="headerlink" title="MCSManager 相关"></a>MCSManager 相关</h2><h3 id="安装面板"><a href="#安装面板" class="headerlink" title="安装面板"></a>安装面板</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">wget</span> -qO- https://gitee.com/mcsmanager/script/raw/master/setup_cn.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="修改-Daemon-服务端口"><a href="#修改-Daemon-服务端口" class="headerlink" title="修改 Daemon 服务端口"></a>修改 Daemon 服务端口</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /opt/mcsmanager/daemon/data/Config/global.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>重启守护进程</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">service</span> mcsm-daemon restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Yunzai-相关"><a href="#Yunzai-相关" class="headerlink" title="Yunzai 相关"></a>Yunzai 相关</h2><p>安装 Redis</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> redis-server <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>添加 Node.js 源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-sL</span> https://deb.nodesource.com/setup_21.x <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token parameter variable">-E</span> <span class="token function">bash</span> -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装 Node.js</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> nodejs <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>npm换源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npmmirror.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装pnpm</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i <span class="token function">pnpm</span> <span class="token parameter variable">-g</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装Chrome</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx puppeteer browsers <span class="token function">install</span> chrome<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装缺失的库</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> libatk1.0-dev libatk-bridge2.0-dev libxcomposite-dev libxdamage-dev libxrandr-dev libgbm-dev libxkbcommon-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Nonebot-相关"><a href="#Nonebot-相关" class="headerlink" title="Nonebot 相关"></a>Nonebot 相关</h2><p>pip换源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config <span class="token builtin class-name">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装pipx</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> pipx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>添加到环境变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pipx ensurepath<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装脚手架</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> nb-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>创建一个虚拟环境</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 <span class="token parameter variable">-m</span> venv .venv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>激活一个虚拟环境</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> .venv/bin/activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装playwright依赖</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> libatk1.0-0 libatk-bridge2.0-0 libxkbcommon0 libatspi2.0-0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>反向 ws 连接配置</p>
+<pre class="line-numbers language-none"><code class="language-none">ONEBOT_V11_WS_URLS&#x3D;[&quot;ws:&#x2F;&#x2F;0.0.0.0:8081&#x2F;onebot&#x2F;ws&quot;]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Lagrange-appsettings-json"><a href="#Lagrange-appsettings-json" class="headerlink" title="Lagrange appsettings.json"></a>Lagrange appsettings.json</h2><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"Logging"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">"LogLevel"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">"Default"</span><span class="token operator">:</span> <span class="token string">"Information"</span><span class="token punctuation">,</span>
+            <span class="token property">"Microsoft"</span><span class="token operator">:</span> <span class="token string">"Warning"</span><span class="token punctuation">,</span>
+            <span class="token property">"Microsoft.Hosting.Lifetime"</span><span class="token operator">:</span> <span class="token string">"Information"</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token property">"SignServerUrl"</span><span class="token operator">:</span> <span class="token string">"https://sign.lagrangecore.org/api/sign"</span><span class="token punctuation">,</span>
+    <span class="token property">"Account"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">"Uin"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"Password"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token property">"Protocol"</span><span class="token operator">:</span> <span class="token string">"Linux"</span><span class="token punctuation">,</span>
+        <span class="token property">"AutoReconnect"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"GetOptimumServer"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token property">"Message"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">"IgnoreSelf"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token property">"Implementations"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">&#123;</span>
+        <span class="token property">"Type"</span><span class="token operator">:</span> <span class="token string">"ForwardWebSocket"</span><span class="token punctuation">,</span>
+        <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"Port"</span><span class="token operator">:</span> <span class="token number">8080</span><span class="token punctuation">,</span>
+        <span class="token property">"HeartBeatInterval"</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token property">"AccessToken"</span><span class="token operator">:</span> <span class="token string">""</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">&#123;</span>
+        <span class="token property">"Type"</span><span class="token operator">:</span> <span class="token string">"ForwardWebSocket"</span><span class="token punctuation">,</span>
+        <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"Port"</span><span class="token operator">:</span> <span class="token number">8081</span><span class="token punctuation">,</span>
+        <span class="token property">"HeartBeatInterval"</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token property">"AccessToken"</span><span class="token operator">:</span> <span class="token string">""</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">&#123;</span>
+        <span class="token property">"Type"</span><span class="token operator">:</span> <span class="token string">"ForwardWebSocket"</span><span class="token punctuation">,</span>
+        <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"Port"</span><span class="token operator">:</span> <span class="token number">8082</span><span class="token punctuation">,</span>
+        <span class="token property">"HeartBeatInterval"</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token property">"AccessToken"</span><span class="token operator">:</span> <span class="token string">""</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">&#123;</span>
+        <span class="token property">"Type"</span><span class="token operator">:</span> <span class="token string">"ForwardWebSocket"</span><span class="token punctuation">,</span>
+        <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"Port"</span><span class="token operator">:</span> <span class="token number">8083</span><span class="token punctuation">,</span>
+        <span class="token property">"HeartBeatInterval"</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token property">"AccessToken"</span><span class="token operator">:</span> <span class="token string">""</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">&#123;</span>
+        <span class="token property">"Type"</span><span class="token operator">:</span> <span class="token string">"ForwardWebSocket"</span><span class="token punctuation">,</span>
+        <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"Port"</span><span class="token operator">:</span> <span class="token number">8084</span><span class="token punctuation">,</span>
+        <span class="token property">"HeartBeatInterval"</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token property">"AccessToken"</span><span class="token operator">:</span> <span class="token string">""</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">&#123;</span>
+        <span class="token property">"Type"</span><span class="token operator">:</span> <span class="token string">"ForwardWebSocket"</span><span class="token punctuation">,</span>
+        <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"Port"</span><span class="token operator">:</span> <span class="token number">8085</span><span class="token punctuation">,</span>
+        <span class="token property">"HeartBeatInterval"</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token property">"AccessToken"</span><span class="token operator">:</span> <span class="token string">""</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>重装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pixiv图片代理自建</title>
+    <url>/posts/22066.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>Pixiv的图片反代最近好像寄了，所以决定自己搭一个，记录一下。</p>
+
+    <div id="aplayer-jXNsEQeO" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="2029174219" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+<h2 id="使用-CloudFlare-Workers-搭建"><a href="#使用-CloudFlare-Workers-搭建" class="headerlink" title="使用 CloudFlare Workers 搭建"></a>使用 CloudFlare Workers 搭建</h2><p>去Cloudflare创建一个Worker，然后将代码替换为如下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">async</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    url<span class="token punctuation">.</span>hostname <span class="token operator">=</span> <span class="token string">'i.pximg.net'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> proxyRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Request</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    proxyRequest<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'Referer'</span><span class="token punctuation">,</span> <span class="token string">'https://www.pixiv.net/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>proxyRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="使用Vercel加速"><a href="#使用Vercel加速" class="headerlink" title="使用Vercel加速"></a>使用Vercel加速</h2><p>在Github创建一个仓库，名称随意，在里面新建一个文件 <code>vercel.json</code>，内容如下：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"routes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">&#123;</span><span class="token property">"src"</span><span class="token operator">:</span> <span class="token string">"/(.*)"</span><span class="token punctuation">,</span><span class="token property">"dest"</span><span class="token operator">:</span> <span class="token string">"https://&#123;DOMAIN&#125;"</span><span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="note info simple"><p>记得将代码中的 {DOMAIN} 部分替换为你自己的域名或者默认域名</p>
+</div>
+
+<blockquote>
+<p>默认域名查看位置：打开你的 Worker 界面，转到 <strong>设置</strong> – <strong>触发器</strong> – <strong>路由</strong><br>自定义域名在同页面的 <strong>自定义域</strong> 处添加。</p>
+</blockquote>
+<p>随后打开 <a href="https://vercel.com/dashboard">Vercel</a> ，选择新建项目，再选择你刚刚创建的仓库，部署即可。<br>然后转至 <strong>Settings</strong> – <strong>Domains</strong>，添加你的自定义域名。然后你的Pixiv图片代理就搭建完成了。</p>
+<h2 id="这玩意有什么用"><a href="#这玩意有什么用" class="headerlink" title="这玩意有什么用"></a>这玩意有什么用</h2><p>Pixiv 在大陆被墙，并且图片服务器域名 i.pximg.net 有盗链保护，只要 Referer 不是来自 Pixiv 的请求都会返回 403。<br>而我们可以通过自建图片反代来获取Pixiv的图片。<br>例如，这是一张 <strong>维尔汀</strong> 的 Pixiv 作品，Pixiv页面链接是 <a href="https://www.pixiv.net/artworks/115663906">https://www.pixiv.net/artworks/115663906</a><br>图片链接是 <a href="https://i.pximg.net/img-master/img/2024/02/01/12/59/30/115663906_p0_master1200.jpg">https://i.pximg.net/img-master/img/2024/02/01/12/59/30/115663906_p0_master1200.jpg</a><br>（你们可以打开图片链接看看能否访问<br>搭建好图片反代后，链接可以写为这样以获取图片：</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;你的反代域名&#x2F;img-master&#x2F;img&#x2F;2024&#x2F;02&#x2F;01&#x2F;12&#x2F;59&#x2F;30&#x2F;115663906_p0_master1200.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>例如我的就是</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;pximg.sakou.xyz&#x2F;img-master&#x2F;img&#x2F;2024&#x2F;02&#x2F;01&#x2F;12&#x2F;59&#x2F;30&#x2F;115663906_p0_master1200.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://pximg.sakou.xyz/img-master/img/2024/02/01/12/59/30/115663906_p0_master1200.jpg" alt="我是维尔汀的狗！！！"></p>
+<p>又比如，如果你正在使用 <a href="https://github.com/Notsfsssf/pixez-flutter">PixEz</a>，那么你可以在 <strong>偏好设置</strong> 中将图片域名更换为你的<br>这样就能使图片正常加载了。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://blog.yuki.sh/posts/599ec3ed8eda/">Pixiv 图片反向代理 - Yuki 妙妙屋</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Pixiv</tag>
+        <tag>CloudFlare Workers</tag>
+        <tag>Vercel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>给你的Hexo-Butterfly加入说说功能</title>
+    <url>/posts/48887.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><div class="note info simple"><p>2024&#x2F;3&#x2F;10更新： 我已经从HexoPlusPlus的说说功能换成Giscus了，具体灵感见 <a href="https://github.com/jerryc127/hexo-theme-butterfly/issues/1290#issuecomment-1701325604">#1290</a>。如何给博客安装见此文 <a href="/posts/61913.html">给你的Hexo-Butterfly添加Giscus评论系统</a> </p>
+</div>
+
+
+<hr>
+<p>整了一个上午，终于搞好了<br>主要是原仓库现在archived了，作者没在维护了，cdn失效了<br>于是我就fork了一份然后修改了下<br>勉强能用<br>可以前往 <a href="/natter">说说</a> 查看效果</p>
+
+    <div id="aplayer-UFOZEzOI" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1936315785" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们使用 <code>HexoPlusPlus</code> 给 <code>Hexo-Butterfly</code> 添加说说功能。</p>
+<div class="note info simple"><p>想要使用 <code>HexoPlusPlus</code> 需要先完成 Hexo集成部署，详见此文： <a href="/posts/62801/#Hexo%E9%9B%86%E6%88%90%E9%83%A8%E7%BD%B2">Windows 下简易 Hexo 部署教程 | QiuSYan’s Blog</a></p>
+</div>
+
+<p>HexoPlusPlus项目地址：<a href="https://github.com/HexoPlusPlus/HexoPlusPlus">HexoPlusPlus&#x2F;HexoPlusPlus</a><br>HexoPlusPlus官方文档：<a href="https://hexoplusplus.js.org/start/">快速上手 | HexoPlusPlus</a></p>
+<blockquote>
+<p>我猜有人会问：为什么不用Artitalk呢<br>因为Artitalk使用LeanCloud为后端，并且需要绑定自己的域名。<br>如果你域名没备案的话那就只能用LeanCloud国际版，但问题是LeanCloud国际版默认的服务域名是被墙了的…<br>Artitalk部署的话好像是要一个自己的域名，还要一个它默认提供的域名（？<br>不清楚，好久之前弄过的，忘了<br>如果现在用国际版能部署的话请在评论区告诉我</p>
+</blockquote>
+<h2 id="部署HexoPlusPlus"><a href="#部署HexoPlusPlus" class="headerlink" title="部署HexoPlusPlus"></a>部署HexoPlusPlus</h2><p>HexoPlusPlus官方文档已经写了很详细了，按照它的说明一步步来就行，此处不再赘述。</p>
+<div class="note warning simple"><p><strong>请注意，此处 文档说要从Github下载的代码请更换为 <a href="https://mirror.ghproxy.com/https://raw.githubusercontent.com/QSlotus/HexoPlusPlus/main/index.js">我修改cdn后的代码</a></strong></p>
+</div>
+
+<blockquote>
+<p><img src="/img/hpp.png" alt="就是这个地方"></p>
+</blockquote>
+<p>其他的按官方文档的来就行。</p>
+<h2 id="将HexoPlusPlus说说添加至Hexo-Butterfly"><a href="#将HexoPlusPlus说说添加至Hexo-Butterfly" class="headerlink" title="将HexoPlusPlus说说添加至Hexo-Butterfly"></a>将HexoPlusPlus说说添加至Hexo-Butterfly</h2><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>在博客根目录下用管理员权限运行CMD，输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-butterfly-hpptalk <span class="token parameter variable">--save</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>以安装适配插件。</p>
+<h3 id="添加配置信息"><a href="#添加配置信息" class="headerlink" title="添加配置信息"></a>添加配置信息</h3><p>请在 <strong>主题配置文件</strong> 或 <strong>站点配置文件</strong> 中加入以下配置： </p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># HexoPlusPlus Talk</span>
+<span class="token comment"># see https://hexoplusplus.js.org</span>
+<span class="token key atrule">hpptalk</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> 
+  <span class="token key atrule">domain</span><span class="token punctuation">:</span> yourdomain <span class="token comment"># 请自行更改</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> talk
+  <span class="token key atrule">limit</span><span class="token punctuation">:</span> <span class="token number">8</span>
+  <span class="token key atrule">start</span><span class="token punctuation">:</span> <span class="token number">0</span> 
+  <span class="token key atrule">js</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//fastly.jsdelivr.net/gh/QSlotus/HexoPlusPlus@latest/talk_user.js
+  <span class="token key atrule">css</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//fastly.jsdelivr.net/gh/QSlotus/HexoPlusPlus@latest/talk.css
+  <span class="token key atrule">option</span><span class="token punctuation">:</span>
+  <span class="token key atrule">front_matter</span><span class="token punctuation">:</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>domain</td>
+<td>【必须】你的 HexoPlusPlus 自定义域名，如 admin.qiusyan.top</td>
+</tr>
+<tr>
+<td>path</td>
+<td>【可选】hpptalk 的路径名称（默认为 <code>hpptalk</code> 生成的页面为 hpptalk&#x2F;index.html）</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>【可选】单次获取的最多条数（默认 <code>8</code>）</td>
+</tr>
+<tr>
+<td>start</td>
+<td>【可选】从第几条开始（默认 <code>0</code>）</td>
+</tr>
+<tr>
+<td>js</td>
+<td>【可选】更换 hpptalk 的 JS CDN（默认：<code>https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk_user.js</code>)</td>
+</tr>
+<tr>
+<td>css</td>
+<td>【可选】更换 hpptalk 的 CSS CDN（默认 <code>https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk.css</code>）</td>
+</tr>
+<tr>
+<td>option</td>
+<td>【可选】hpptalk 需要的额外配置</td>
+</tr>
+<tr>
+<td>front_matter</td>
+<td>【可选】hpptalk 页面的 front_matter 配置</td>
+</tr>
+</tbody></table>
+<p>完成！你现在可以通过访问 <code>你的博客域名/talk</code> 来查看你的说说页面了。</p>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>HexoPlusPlus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows下简易Hexo部署教程</title>
+    <url>/posts/62801.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>最近没啥事干，就来记录一下Hexo部署过程吧<br><span class="heimu" title="咳咳">其实是我经常<del>整活</del>给电脑重装系统导致环境啥的得重新配（捂脸</span><br>虽然是Windows下的教程，但是Linux和Mac端也大差不差</p>
+
+    <div id="aplayer-WfKYnScq" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1833191196" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><ul>
+<li>必须<ul>
+<li>一个会使用搜索引擎去解决问题的脑子</li>
+<li>一个Github账号</li>
+<li>一台电脑</li>
+</ul>
+</li>
+<li>可选<ul>
+<li>一个域名</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hexo是什么"><a href="#Hexo是什么" class="headerlink" title="Hexo是什么"></a>Hexo是什么</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他标记语言）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>Hexo中文文档：<a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>进入<a href="https://git-scm.com/download">Git官网下载界面</a>，选择对应的系统，点击下载安装即可。<br>安装选择默认配置就行 <span class="heimu">就是一路按Next</span></p>
+<blockquote>
+<p>如果你的网络环境难以访问下载界面，那么也可以选择 <strong><a href="https://mirrors.bfsu.edu.cn/github-release/git-for-windows/git/LatestRelease/Git-2.44.0-64-bit.exe">点击此处</a></strong> 用镜像站下载</p>
+</blockquote>
+<h2 id="绑定Github"><a href="#绑定Github" class="headerlink" title="绑定Github"></a>绑定Github</h2><p>在桌面右键，选择 <code>Open Git Bash here</code>，唤出Git Bash。</p>
+<p><img src="/img/gitbash.png" alt="如图示"></p>
+<p>在Git Bash中输入 <code>ssh</code> 以验证SSH安装。</p>
+<p><img src="/img/gitbash-ssh.png" alt="如果安装了ssh应该会出现如图所示输出"></p>
+<p>随后输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>指定 RSA 算法生成密钥。然后按4次回车，就生成了两个文件，分别为秘钥 <code>id_rsa</code> 和公钥 <code>id_rsa.pub</code>。<br>文件的位置会在Git Bash上显示，默认会生成在以下目录：</p>
+<ul>
+<li>Linux：~&#x2F;.ssh</li>
+<li>Mac: ~&#x2F;.ssh</li>
+<li>Windows: C:&#x2F;Users&#x2F;yourusername&#x2F;.ssh</li>
+</ul>
+<p>进入密钥生成目录并显示公钥内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ~/.ssh <span class="token operator">&amp;&amp;</span> <span class="token function">cat</span> id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/img/gitbash-rsa.png" alt="如图示"><br>将这一串<code>ssh-rsa</code>开头的玩意复制，然后打开你的Github - <strong>Settings</strong> - <strong>SSH and GPG keys</strong><br>或者直接通过此链接跳转：<a href="https://github.com/settings/keys">SSH and GPG keys</a><br>点击 <code>New SSH key</code>，然后将你刚刚复制的那一串东西粘贴到<strong>Key</strong>内，再点击<strong>Add SSH key</strong>即可</p>
+<blockquote>
+<p>标题随意，不填也行</p>
+</blockquote>
+<p>在Git Bash中输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>以验证是否添加成功。<br>第一次连接会遇到这种情况，填yes就行<br><img src="/img/gitbash-github.png" alt="填yes就行"><br>出现如下输出则证明绑定Github成功。<br><img src="/img/gitbash-github1.png" alt="如图示"></p>
+<h2 id="Node-js相关"><a href="#Node-js相关" class="headerlink" title="Node.js相关"></a>Node.js相关</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>截至本文撰写时间（2024&#x2F;3&#x2F;7），Node.js官方推荐版本为 <code>20.11.1 LTS</code><br>Windows用户可点击 <a href="https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v20.11.1/node-v20.11.1-x64.msi">此镜像链接</a> 一键下载</p>
+<p>下载完成后，在 <strong>D盘</strong> 新建一个文件夹 <code>ndoejs</code>，然后打开安装程序，将其安装目录修改为 <code>D:\nodejs</code>，再一路点击 <code>Next</code> 即可。</p>
+<p>验证安装是否成功：CMD输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> <span class="token parameter variable">-v</span>
+<span class="token function">npm</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如果成功安装，你应该会看到如下的输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">C:\Users\qiusyan&gt;node -v
+v20.11.1
+C:\Users\qiusyan&gt;npm -v
+10.2.4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="设置npm在安装全局模块时的路径和环境变量"><a href="#设置npm在安装全局模块时的路径和环境变量" class="headerlink" title="设置npm在安装全局模块时的路径和环境变量"></a>设置npm在安装全局模块时的路径和环境变量</h3><p>如果不设置的话，安装模块的时候就会把模块装到C盘，占用C盘的空间<br>你也不想变成C盘战士吧 .jpg</p>
+<p>在 nodejs 安装文件夹中新建两个空文件夹 <code>node_cache</code>和<code>node_global</code></p>
+<blockquote>
+<p>两个文件夹目录应该分别是 <code>D:\nodejs\node_cache</code> 和 <code>D:\nodejs\node_global</code></p>
+</blockquote>
+<p>然后打开CMD，输入如下两个命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> prefix <span class="token string">"D:<span class="token entity" title="\n">\n</span>odejs<span class="token entity" title="\n">\n</span>ode_global"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> cache <span class="token string">"D:<span class="token entity" title="\n">\n</span>odejs<span class="token entity" title="\n">\n</span>ode_cache"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>再来设置环境变量。<br>打开 <strong>控制面板</strong> - <strong>系统</strong> - <strong>高级系统设置</strong> - <strong>环境变量</strong> ，然后在<strong>系统变量</strong>中新建一个变量名为 <code>NODE_PATH</code>，值为<code>D:\nodejs\node_global\node_modules</code>，如下图：<br><img src="/img/nodepath.png" alt="设置环境变量"><br>然后编辑<strong>用户变量</strong>里的 <code>Path</code> ，将相应npm的路径改为 <code>D:\nodejs\node_global</code>，如下图：<br><img src="/img/npmpath.png"></p>
+<h3 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h3><p>CMD输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npmmirror.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将npm源更换为阿里的</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p><strong>使用管理员权限</strong> 运行你的CMD或者Powershell，然后输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i hexo-cli <span class="token parameter variable">-g</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>全局安装 <code>hexo-cli</code></p>
+<p>再挑个你 <strong>想要存放博客源代码的地方</strong> ，比如 <code>E:\个人文件\Blog</code>，那就去 <code>E盘</code> 的 <code>个人文件</code> 目录下，新建一个名为<code>Blog</code>的文件夹。<br>在该文件夹内 <strong>使用管理员权限</strong> 运行你的CMD或者Powershell，输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>初始化博客。</p>
+<blockquote>
+<p>如果打开管理员权限的CMD窗口后发现路径不正确，那么在CMD中输入 <code>cd &#39;你的博客绝对路径&#39;</code> 即可<br>例如</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token string">'E:\个人文件\Blog'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<blockquote>
+<p>如果你的网络环境无法让你连接到Github，那么建议使用 <a href="https://steampp.net/">Watt Toolkit</a> 加速Github连接。<br>使用工具加速后，请打开Git Bash，输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> http.sslVerify <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>禁用Git的SSL证书验证<br>如果你不想禁用，那么请自行科学上网</p>
+</blockquote>
+<blockquote>
+<p>以下是hexo-cli中的一些命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo clean <span class="token comment"># 清除hexo缓存</span>
+hexo g <span class="token comment"># 生成静态文件</span>
+hexo d <span class="token comment"># 部署静态文件到预设定的服务</span>
+hexo s <span class="token comment"># 本地预览</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>但是这些我们都用不到，因为我们要用的是hexo集成部署</strong> 而不是生成静态文件后手动推送到云端</p>
+</blockquote>
+<h2 id="Hexo集成部署"><a href="#Hexo集成部署" class="headerlink" title="Hexo集成部署"></a>Hexo集成部署</h2><h3 id="什么是Hexo集成部署"><a href="#什么是Hexo集成部署" class="headerlink" title="什么是Hexo集成部署"></a>什么是Hexo集成部署</h3><p>Hexo集成部署即每次我们 push 源代码后，自动生成静态文件，并上传到我们的仓库或者云存储中。</p>
+<p><span class="heimu">为什么一定要集成部署？你不集成部署那能叫Hexo吗？</span></p>
+<h3 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h3><p>打开Github，新建两个仓库<br><strong>一个仓库是存放源代码的</strong>，<strong>一个是存放源代码生成的静态文件的</strong>。</p>
+<div class="note info simple"><p><strong>源代码仓库记得设置为私有</strong></p>
+</div>
+
+<h3 id="Github-的链接形式"><a href="#Github-的链接形式" class="headerlink" title="Github 的链接形式"></a>Github 的链接形式</h3><p>  Github 这种网站的代码仓库地址常见有三种形式，适用于不同的情况，下面简单介绍一下。</p>
+<ul>
+<li>普通链接，一般在使用账号密码登录后或者ssh传输时使用。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 这种地址可以直接在仓库中复制
+https:&#x2F;&#x2F;github.com&#x2F;QSlotus&#x2F;Blog.git
+git@github.com:QSlotus&#x2F;Blog.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>账号密码链接，这种适用于自己调用 Github 的数据或者当 Api 使用等情形。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;&#123;username&#125;:&#123;password&#125;@github.com&#x2F;QSlotus&#x2F;Blog.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>token 链接，在 Github Settings 中生成 token 后，可以直接放到仓库地址中，这样就可以直接访问有权限的仓库，方便我们自动部署。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;&#123;token&#125;@github.com&#x2F;QSlotus&#x2F;Blog.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="生成-Github-Token"><a href="#生成-Github-Token" class="headerlink" title="生成 Github Token"></a>生成 Github Token</h3><p>了解完 Github 这些链接形式后，我们就可以开始配置了，因为我们决定使用 Token 这种链接形式来进行连线推送等操作，所以首先就是生成<em><strong>Github Token</strong></em>。<br>打开 <a href="https://github.com/settings/tokens/new">Personal access tokens</a> 创建一个新的token<br><img src="/img/ghtoken.png" alt="如图示"><br>如上图示，Token名称随意，<code>Expiration</code> 选择 <code>No expiration</code>，然后勾选 <code>repo</code> 下的所有权限，再点击最下方的 <code>Generate token</code> 即可。</p>
+<p><strong>token生成后，此信息只会显示一次，记得及时保存</strong><br><img src="/img/ghtoken1.png"></p>
+<h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改 _config.yml"></a>修改 _config.yml</h3><p>打开你的博客源代码根目录，找到 <code>_config.yml</code> 文件，拉到最下面，修改 <code>deploy</code> 部分为如下代码：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Deployment</span>
+<span class="token comment">## Docs: https://hexo.io/docs/one-command-deployment</span>
+<span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repository</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//<span class="token punctuation">&#123;</span>$GH_TOKEN<span class="token punctuation">&#125;</span>@github.com/QSlotus/Blog.git  <span class="token comment">#你的仓库地址</span>
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<div class="note info simple"><p>注意此处的 <code>{$GH_TOKEN}</code> 之前生成的 token 内容，仓库地址是我们 <strong>存放源代码生成的静态文件的那个</strong></p>
+</div>
+
+<h3 id="添加-GitHub-Actions-脚本"><a href="#添加-GitHub-Actions-脚本" class="headerlink" title="添加 GitHub Actions 脚本"></a>添加 GitHub Actions 脚本</h3><p>Hexo配置完成，开始编写 Github Actions 脚本文件。<br>GitHub Actions 的配置文件叫做 workflow 文件，存放在源代码仓库的 .github&#x2F;workflows 目录。<br>workflow 文件采用 YAML 格式，文件名可以任意取，但是后缀名统一为 .yml，比如 test.yml。一个库可以有多个 workflow 文件。<br>GitHub 在我们完成预设触发条件时，只要发现 .github&#x2F;workflows 目录里面有 .yml 文件，就会自动读取运行该文件。</p>
+<p>在博客源代码根目录创建文件，路径为 <code>.github/workflows/deploy.yml</code>。<br>修改文件内容为如下：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> QiuSYan's Blog CI/CD <span class="token comment"># 脚本 workflow 名称</span>
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>main<span class="token punctuation">]</span> <span class="token comment"># 当前监测 main 分支的 push</span>
+    <span class="token key atrule">paths</span><span class="token punctuation">:</span> <span class="token comment"># 监测所有 source 目录下的文件变动，所有 yml,json 后缀文件的变动。</span>
+      <span class="token punctuation">-</span> <span class="token string">'*.json'</span>
+      <span class="token punctuation">-</span> <span class="token string">'**.yml'</span>
+      <span class="token punctuation">-</span> <span class="token string">'**/source/**'</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">blog</span><span class="token punctuation">:</span> <span class="token comment"># 任务名称</span>
+    <span class="token key atrule">timeout-minutes</span><span class="token punctuation">:</span> <span class="token number">30</span> <span class="token comment"># 设置 30 分钟超时</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest <span class="token comment"># 指定最新 ubuntu 系统</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3 <span class="token comment"># 拉取仓库代码</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v3
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token string">'20'</span> <span class="token comment"># 你想要设置的Node.js版本</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Cache node_modules <span class="token comment"># 缓存 node_modules，提高编译速度</span>
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/cache@v2 
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+          <span class="token key atrule">cache-name</span><span class="token punctuation">:</span> cache<span class="token punctuation">-</span>node<span class="token punctuation">-</span>modules
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">path</span><span class="token punctuation">:</span> ~/.npm
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> runner.os <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">-</span>build<span class="token punctuation">-</span>$<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> env.cache<span class="token punctuation">-</span>name <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">-</span>$<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> hashFiles('<span class="token important">**/package-lock.json')</span> <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+          <span class="token key atrule">restore-keys</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            $&#123;&#123; runner.os &#125;&#125;-build-$&#123;&#123; env.cache-name &#125;&#125;-
+            $&#123;&#123; runner.os &#125;&#125;-build-
+            $&#123;&#123; runner.os &#125;&#125;-</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Init Node.js <span class="token comment"># 安装源代码所需插件</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          npm install
+          echo "init node successful"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install Hexo<span class="token punctuation">-</span>cli <span class="token comment"># 安装 Hexo</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          npm install -g hexo-cli --save
+          echo "install hexo successful"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build Blog <span class="token comment"># 编译创建静态博客文件</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          hexo clean
+          hexo g
+          echo "build blog successful"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy QiuSYan's Blog <span class="token comment"># 设置 git 信息并推送静态博客文件</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span> <span class="token comment"># 记得修改git提交信息为自己的</span>
+          git config <span class="token punctuation">-</span><span class="token punctuation">-</span>global user.name "QiuSYan"
+          git config <span class="token punctuation">-</span><span class="token punctuation">-</span>global user.email "halo<span class="token punctuation">-</span>402@outlook.com" 
+          hexo deploy
+
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo "Deploy Successful<span class="token tag">!</span>"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="将源代码推送至Github"><a href="#将源代码推送至Github" class="headerlink" title="将源代码推送至Github"></a>将源代码推送至Github</h3><p>到了这里，我们集成部署就快完成了。现在就是将整个博客源代码推送至Github。</p>
+<p>在博客根目录下打开Git Bash，依次输入以下指令：（注释不要复制</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init <span class="token comment"># 初始化一个Git仓库</span>
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span> <span class="token comment"># 将该目录下所有文件添加至缓冲区</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"提交信息"</span> <span class="token comment"># 进行一次提交</span>
+<span class="token function">git</span> remote <span class="token function">add</span> origin git@github.com:QSlotus/blog-source.git <span class="token comment"># 这里的仓库是你创建的博客源代码存放仓库，跟之前config.yml里面的不同</span>
+<span class="token function">git</span> push origin main <span class="token comment"># 指定提交分支为 main</span>
+<span class="token function">git</span> push origin main <span class="token comment"># push代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>即可。</p>
+<h2 id="部署你的博客"><a href="#部署你的博客" class="headerlink" title="部署你的博客"></a>部署你的博客</h2><p>之前我们将博客的源代码推送到了Github，让Github Actions帮我们生成静态文件并推送到静态文件仓库<br>那么现在我们来将博客部署好（指能在浏览器访问到你的博客</p>
+<p>我们使用 <strong>Netlify</strong> 来部署。</p>
+<p>那么，什么是Netlify呢？</p>
+<p>这是ChatGLM给出的答复：</p>
+<blockquote>
+<p>Netlify 是一个提供网站托管和服务器less后端服务的平台，特别适合现代静态网站的部署和托管。它支持从GitHub、GitLab和Bitbucket等代码托管服务中自动获取网站源码，并提供了一系列强大的功能来帮助开发者快速、高效地构建、部署和维护网站。<br>Netlify 提供的主要功能包括：</p>
+<ol>
+<li><p><strong>持续部署</strong>：Netlify 可以在每次代码推送至你的Git仓库时自动构建和部署网站。</p>
+</li>
+<li><p><strong>服务器less函数和后端</strong>：Netlify Functions 允许你运行服务器less函数，支持多种编程语言，无需管理服务器即可处理表单提交、API请求等。</p>
+</li>
+<li><p><strong>自定义域名</strong>：你可以使用自己的域名，并且Netlify提供了免费的SSL证书来实现HTTPS。</p>
+</li>
+<li><p><strong>静态文件托管</strong>：Netlify 可以托管静态文件，包括HTML、CSS、JavaScript等。</p>
+</li>
+<li><p><strong>支持多种构建命令和工具</strong>：Netlify 支持多种静态站点生成器，如Jekyll、Hugo、Gatsby等，以及自定义的构建命令。</p>
+</li>
+<li><p><strong>形式和数据存储</strong>：Netlify 可以收集表单数据并存储在后台，也可以通过集成其他服务如Airtable、Google Sheets等处理数据。</p>
+</li>
+<li><p><strong>全球加速的CDN</strong>：Netlify 提供了全球内容分发网络（CDN），确保用户可以从最近的服务器快速加载内容。</p>
+</li>
+<li><p><strong>环境变量管理</strong>：可以安全地存储和管理环境变量，便于在不同环境中使用不同的配置。</p>
+</li>
+</ol>
+<p>Netlify 对于个人开发者和小型团队来说，提供了一个简洁、易用的界面，以及强大的自动化工具，使得网站部署和维护变得更加简单。同时，它的服务器less功能也为开发者提供了构建复杂应用的灵活性。</p>
+</blockquote>
+<p>打开 <a href="https://app.netlify.com/login">Netlify登录界面</a>，选择用Github登录。<br>随后可能有一些邮箱验证啥的，按照他的提示去做就行了。<br>然后创建一个Team。<br>点击 <code>Create new team</code> ，计划选那个 <code>Starter team plan</code> ，这个是免费的。然后填写相关信息，点击创建即可。<br>随后应该会跳转到你的Team主页，这时点左侧的 <code>Site</code> - <code>Add new site</code> - <code>Import an existing project</code>后，会看到如下的界面。<br><img src="/img/netlify-deploy.png"><br>选择 <code>Deploy with Github</code>，然后在弹出的窗口中按照其指引安装Netlify App，记得将其安装到所有的仓库中<br><img src="/img/netlify-deploy1.png"><br>这时你会在页面上看到你的所有仓库，然后你找到那个 <strong>博客静态文件</strong> 存放的仓库，选择。<br>选择之后会跳转到信息填写页面，其中 <code>Site name</code> 部分建议修改为你想要的二级域名前缀，其他的不用改，然后点 <code>Deploy</code> 就行了。</p>
+<blockquote>
+<p>Netlify会提供一个格式为 <code>yoursitename.netlify.app</code> 的二级域名</p>
+</blockquote>
+<p>这时你去浏览器访问 <code>你刚刚改的站点名称.netlify.app</code> 会发现，博客已经部署完成。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/102592286">从零开始搭建个人博客（超详细） - 知乎 (zhihu.com)</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/2369534">【Hexo自动部署】优雅的使用 Github Actions 进行 Hexo 静态博客的持续集成与部署-腾讯云开发者社区-腾讯云 (tencent.com)</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Netlify</tag>
+        <tag>Github Actions</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win11下WSL2配置记录</title>
+    <url>/posts/3676.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>最近电脑老是无响应，C盘也快满了，就寻思着把系统重装下<br>听说现在Win11更到了23H2了，抱着尝尝鲜的想法，我决定把系统升个级<br>顺便用WSL2装了个Ubuntu，挺舒服的。</p>
+
+    <div id="aplayer-qUWsJuur" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="2124106667" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+
+
+
+
+
+<h2 id="WSL-是什么"><a href="#WSL-是什么" class="headerlink" title="WSL 是什么"></a>WSL 是什么</h2><p><strong>WSL</strong>，全称 <strong>适用于 Linux 的 Windows 子系统</strong>。</p>
+<blockquote>
+<p>适用于 Linux 的 Windows 子系统 (WSL) 是 Windows 的一项功能，可用于在 Windows 计算机上运行 Linux 环境，而无需单独的虚拟机或双引导。 WSL 旨在为希望同时使用 Windows 和 Linux 的开发人员提供无缝高效的体验。</p>
+<ul>
+<li><p>使用 WSL 安装和运行各种 Linux 发行版，例如 Ubuntu、Debian、Kali 等。 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/install">安装 Linux 发行版</a>并从 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/compare-versions#wsl-in-the-microsoft-store">Microsoft Store</a> 接收自动更新、<a href="https://learn.microsoft.com/zh-cn/windows/wsl/use-custom-distro">导入 Microsoft Store 中不可用的 Linux 发行版</a>，或<a href="https://learn.microsoft.com/zh-cn/windows/wsl/build-custom-distro">构建你自己的客户 Linux 发行版</a>。</p>
+</li>
+<li><p>将文件存储在独立的 Linux 文件系统中，具体取决于安装的发行版。</p>
+</li>
+<li><p>运行命令行工具，例如 BASH。</p>
+</li>
+<li><p>运行常用的 BASH 命令行工具（例如 <code>grep</code>、<code>sed</code>、<code>awk</code>）或其他 ELF-64 二进制文件。</p>
+</li>
+<li><p>运行 Bash 脚本和 GNU&#x2F;Linux 命令行应用程序，包括：</p>
+<ul>
+<li>工具：vim、emacs、tmux</li>
+<li>语言：<a href="https://learn.microsoft.com/zh-cn/windows/nodejs/setup-on-wsl2">NodeJS</a>、JavaScript、<a href="https://learn.microsoft.com/zh-cn/windows/python/web-frameworks">Python</a>、Ruby、C&#x2F;C++、C# 和 F#、Rust、Go 等。</li>
+<li>服务：SSHD、<a href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/wsl-database">MySQL</a>、Apache、lighttpd、<a href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/wsl-database">MongoDB</a>、<a href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/wsl-database">PostgreSQL</a>。</li>
+</ul>
+</li>
+<li><p>使用自己的 GNU&#x2F;Linux 分发包管理器安装其他软件。</p>
+</li>
+<li><p>使用类似于 Unix 的命令行     调用 Windows 应用程序。</p>
+</li>
+<li><p>在 Windows 上调用 GNU&#x2F;Linux 应用程序。</p>
+</li>
+<li><p>运行直接集成到 Windows 桌面的 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/gui-apps">GNU&#x2F;Linux 图形应用程序</a></p>
+</li>
+<li><p>使用你的设备 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/gpu-compute">GPU 加速 Linux 上运行的机器学习工作负载</a>。</p>
+</li>
+</ul>
+<p>摘自 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/about">什么是适用于 Linux 的 Windows 子系统 | Microsoft Learn</a></p>
+</blockquote>
+<p>简而言之，WSL可以让你在Windows上安装Linux子系统而无需其他的软件如 <strong>VMWare</strong></p>
+<blockquote>
+<p>碎碎念：VMWare的vmware-hosted老是占掉我的443端口导致Steam++加速失败，还得我手动去关qwq</p>
+</blockquote>
+<h2 id="WSL2-又是什么"><a href="#WSL2-又是什么" class="headerlink" title="WSL2 又是什么"></a>WSL2 又是什么</h2><blockquote>
+<p>安装 Linux 发行版时，WSL 2 是默认发行版类型。 WSL 2 使用虚拟化技术在轻量级实用工具虚拟机 (VM) 中运行 Linux 内核。 Linux 发行版作为独立的容器在 WSL 2 托管 VM 内运行。 通过 WSL 2 运行的 Linux 发行版将共享同一网络命名空间、设备树（而非 <code>/dev/pts</code>）、CPU&#x2F;内核&#x2F;内存&#x2F;交换空间、<code>/init</code> 二进制文件，但有自己的 PID 命名空间、装载命名空间、用户命名空间、Cgroup 命名空间和 <code>init</code> 进程。</p>
+<p>WSL 2 提高了文件系统性能，并且与 WSL 1 体系结构相比增加了完整的系统调用兼容性。 详细了解 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/compare-versions">WSL 1 和 WSL 2 的比较</a>。</p>
+<p>单个 Linux 分发版可以在 WSL 1 或 WSL 2 体系结构中运行。 每个分发版可随时升级或降级，并且你可以并行运行 WSL 1 和 WSL 2 分发版。 请参阅<a href="https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands#set-default-wsl-version">设置 WSL 版本命令</a>。</p>
+<p>摘自 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/about#what-is-wsl-2">什么是 WSL 2 | Microsoft Learn</a></p>
+</blockquote>
+<h2 id="安装-WSL2-及-Linux发行版"><a href="#安装-WSL2-及-Linux发行版" class="headerlink" title="安装 WSL2 及 Linux发行版"></a>安装 WSL2 及 Linux发行版</h2><h3 id="环境检查"><a href="#环境检查" class="headerlink" title="环境检查"></a>环境检查</h3><p><strong>Win+R</strong> 输入 <code>winver</code> 回车以查看你的 Windows版本。</p>
+<blockquote>
+<p>若要更新到 WSL 2，需要运行 Windows 10。</p>
+<ul>
+<li>对于 x64 系统：版本 1903 或更高版本，内部版本为 18362.1049 或更高版本。</li>
+<li>对于 ARM64 系统：版本 2004 或更高版本，内部版本为 19041 或更高版本。</li>
+</ul>
+<p>或 Windows 11。</p>
+</blockquote>
+<h3 id="启用-WSL-功能"><a href="#启用-WSL-功能" class="headerlink" title="启用 WSL 功能"></a>启用 WSL 功能</h3><p><strong>Win+Q</strong> 打开搜索框，查找 <strong>启用或关闭Windows功能</strong> 。<br>打开后，勾选 <strong>虚拟机平台</strong> 和 <strong>适用于 Linux 的 Windows 子系统</strong></p>
+<blockquote>
+<p>如图示<br><img src="/img/windows%E5%8A%9F%E8%83%BD.png" alt="windows功能"></p>
+</blockquote>
+<h3 id="设置默认安装-WSL2"><a href="#设置默认安装-WSL2" class="headerlink" title="设置默认安装 WSL2"></a>设置默认安装 WSL2</h3><p>为了安装 WSL2，需要先安装 WSL2 的内核更新包：<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">适用于 x64 计算机的 WSL2 Linux 内核更新包</a>。<br>下载后双击安装。<br>安装后，打开 CMD ，使用该指令将 WSL2 设置为默认版本：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl --set-default-version <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="升级-WSL2-至最新版本"><a href="#升级-WSL2-至最新版本" class="headerlink" title="升级 WSL2 至最新版本"></a>升级 WSL2 至最新版本</h3><p>打开 CMD ，输入指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl <span class="token parameter variable">--update</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>完成后可输入以下指令验证是否升级成功：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl <span class="token parameter variable">--version</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="安装至非C盘"><a href="#安装至非C盘" class="headerlink" title="安装至非C盘"></a>安装至非C盘</h3><p>微软的文档的安装方法很简单，一行指令的事：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl <span class="token parameter variable">--install</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>但是，这个安装方法会将Linux发行版默认安装至C盘</strong><br>如果你的C盘很大，那你随意<br>如果你不想将其安装到C盘，那么请继续往下看</p>
+<p>首先，去官网下载你想要的Linux发行版：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#downloading-distributions">下载发行版</a></p>
+<blockquote>
+<p><img src="/img/%E4%B8%8B%E8%BD%BD%E5%8F%91%E8%A1%8C%E7%89%88.png" alt="下载发行版"></p>
+</blockquote>
+<p>将安装包下载下来后，创建一个 <strong>你想要的发行版的安装目录</strong>，然后将安装包移动至目录中。<br>再将其后缀改为 <code>.zip</code>，解压。解压后你会得到一个文件夹，如果文件夹中有 <code>.exe</code> 文件那双击安装就可以了<br>如果解压后文件夹内有多个 <code>.appx</code> 文件，那就根据自己的平台找到那个 <code>&lt;发行版名称及版本&gt;_x64.appx</code> 文件 或 <code>&lt;发行版名称及版本&gt;_ARM64.appx</code>，将其后缀改为 <code>.zip</code> 再次解压，这样就可以得到 <code>.exe</code> 文件了。<br>这时候，双击 <code>.exe</code> 文件，就能开始安装Linux子系统了。<br>安装时根据向导进行相应的设置即可。不过注意在设置用户名时只能设置小写字母、数字和下划线（不能使用大写字母）。<br>至此我们已经安装好了 WSL2，在 CMD 中使用命令可以检查我们安装的版本：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl <span class="token parameter variable">-l</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="配置-Linux-发行版"><a href="#配置-Linux-发行版" class="headerlink" title="配置 Linux 发行版"></a>配置 Linux 发行版</h2><p>那么咱们现在开始配置Linux发行版（以 <code>Ubuntu 22.04</code> 为例</p>
+<p>打开 CMD，输入以下指令进入已安装的发行版：</p>
+<pre class="line-numbers language-basha" data-language="basha"><code class="language-basha">wsl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="换源并更新软件包"><a href="#换源并更新软件包" class="headerlink" title="换源并更新软件包"></a>换源并更新软件包</h3><p>进入系统的第一步当然是换源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g'</span> /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果你想把安全更新的源也给换了，那就使用如下指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s/security.ubuntu.com/mirrors.ustc.edu.cn/g'</span> /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用 HTTPS 可以有效避免国内运营商的缓存劫持</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s/http:/https:/g'</span> /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>更新软件包：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">apt-get</span> upgrade <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="启用-systemd"><a href="#启用-systemd" class="headerlink" title="启用 systemd"></a>启用 <code>systemd</code></h3><p>命令行输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"[boot]<span class="token entity" title="\n">\n</span>systemd=true"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/wsl.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>随后退出Linux环境，输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl <span class="token parameter variable">--shutdown</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重启Linux。随后输入<code>wsl</code>进入Linux发行版即可。<br>通过在Linux发行版内执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl list-unit-files <span class="token parameter variable">--type</span><span class="token operator">=</span>service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>确认systemd启用情况。</p>
+<h3 id="将语言设置为中文"><a href="#将语言设置为中文" class="headerlink" title="将语言设置为中文"></a>将语言设置为中文</h3><p>生成简体中文环境支持文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> locale-gen zh_CN.UTF-8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装语言包</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> language-pack-zh-hans language-pack-zh-hant <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装字符集</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/share/locales <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> ./install-language-pack zh_CN <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将语言配置写入 <code>/etc/profile</code> 文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'$a export LANG=zh_CN.UTF-8\nexport LANGUAGE=zh_CN:zh'</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使配置生效</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>验证是否生效</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">locale<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果生效了，终端应该会有如下的输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">LANG&#x3D;zh_CN.UTF-8
+LANGUAGE&#x3D;zh_CN:zh
+LC_CTYPE&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_NUMERIC&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_TIME&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_COLLATE&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_MONETARY&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_MESSAGES&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_PAPER&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_NAME&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_ADDRESS&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_TELEPHONE&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_MEASUREMENT&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_IDENTIFICATION&#x3D;&quot;zh_CN.UTF-8&quot;
+LC_ALL&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="固定Linux发行版的ip地址"><a href="#固定Linux发行版的ip地址" class="headerlink" title="固定Linux发行版的ip地址"></a>固定Linux发行版的ip地址</h3><p>在Windows用户目录 <code>%USERPROFILE%</code> 下面创建一个配置文件 .wslconfig，写入以下内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>experimental<span class="token punctuation">]</span>
+<span class="token assign-left variable">networkingMode</span><span class="token operator">=</span>mirrored
+<span class="token assign-left variable">dnsTunneling</span><span class="token operator">=</span>true
+<span class="token assign-left variable">firewall</span><span class="token operator">=</span>true
+<span class="token assign-left variable">autoProxy</span><span class="token operator">=</span>true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>再在终端输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wsl <span class="token parameter variable">--shutdown</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重启wsl，再进入就可以了<br>以后想从Windows访问Linux内的服务就可以通过在浏览器中输入 <code>localhost:&lt;端口号&gt;</code> 来访问</p>
+<h2 id="潦草地结束"><a href="#潦草地结束" class="headerlink" title="潦草地结束"></a>潦草地结束</h2><p>我受不了这个Win11了，一堆bug，好多应用都是全篇乱码，到网上找了解决方法也没起用<br>不是说已经23H2了吗，不应该整的很好吗（挠头<br>哦听说是阿三做的啊，那没事了<br>微软你不会做可以不要做，不要把这个做成一坨的东西端上来<br><span class="heimu" title="充其量是一坨比较炫的吧">虽然win11UI挺好看的</span><br>直接msdn rufus启动，win10我tm莱纳</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://blog.csdn.net/weixin_45840825/article/details/127138564">win11 安装 WSL2 在非 C 盘及配置（图形界面+代理）_wsl不安装在c盘 csdn-CSDN博客</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/593263088">WSL2 网络的最终解决方案 - 知乎 (zhihu.com)</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/165961076">Ubuntu Zh_CN_UTF8 设置 - 知乎 (zhihu.com)</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Win11</tag>
+        <tag>WSL2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的2023</title>
+    <url>/posts/10055.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>时间过的好快啊。不知不觉间一年又过去了。<br>这篇年度总结我本来都不准备写了（鸽子精附体<br>但是想来想去还是写一篇记录一下吧 毕竟我博客复活总不能还是挂着那几篇老文章 也不好看是不是（<br>于是到今天才写了这篇2023年度总结（咕咕咕<br>各位将就看看吧 我太久没写东西了基本语言逻辑 表述方面啥的可能都有点问题 就这样</p>
+<span id="more"></span>
+
+
+
+
+
+
+    <div id="aplayer-lyaAHRVr" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1959667347" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+
+
+
+
+
+<h2 id="中考"><a href="#中考" class="headerlink" title="中考"></a>中考</h2><p>2023年对我来说其中的一件大事是中考。<br>中考嘛，人生中第二道分水岭嘛 <span class="heimu" title="可恶！居然被你发现了！￣へ￣">第一道是投胎（不是</span><br>我表现的还行吧，850的总分也考了722.4<br>这个分数主要是啃老本（捂脸）<br>因为3月份的时候查出来病复发了（具体可以看之前的博文<span class="heimu" title="可恶！居然被你发现了！￣へ￣">悲观日常</span> ）<br>但是由于各种现实原因我又不能在23届休学 所以就只能边治病边上学（瘫）<br>2月份复学之后我差不多安安稳稳的上了一个月的课 （这部分课还是我已经学过了的（！<br>然后就是长沙娄底不停往返 害<br>治疗的话一个疗程要连续打一个星期的药 21天去一次 所以说在回来之后我只有2周时间就又得去医院了（悲）我根本没多少时间上课（瘫）<br>而且更不知道怎么说的是<br>我在医院的时候 他们在复习<br>我在学校的时候 他们在考试<br>我：？<br>我：啊？</p>
+<p>所幸我之前的基础还不错 啃老本也没有落下太多 一二模之类考的不能说很好 只能说一般吧<br>如果我认认真真上课的话 班一名一定是我的！（蜜汁自信hhh）</p>
+<p>然后中考的话 怎么说呢 考的还是差了点意思 但是对于当时的我来说还算超常发挥了嘿嘿（当时以为只能考690+<br>如果没生病的话我努努力是能上800的</p>
+<p>所以说咱现在也是有初中毕业证的人啦！虽说身体原因 只能又休学一年 害 <span class="heimu" title="可恶！居然被你发现了！￣へ￣">（所以才说是准高一生</span> </p>
+<p>再说说今年复学的这个班级吧<br>很幸运我能遇到这么一群可爱的同学 虽然说在一起的时间比较短但是还是有几个玩的很好的朋友的！<br>现在虽然毕业了 分开了 但是咱几个都还是在群里聊天吹水 有空一起玩玩游戏啥的 挺好的</p>
+<h2 id="治疗"><a href="#治疗" class="headerlink" title="治疗"></a>治疗</h2><p>中考后大概是8月初吧，我到长沙湘雅附二内科楼三楼层流病房<span class="heimu" title="可恶！居然被你发现了！￣へ￣"><del>报菜名既视感</del></span> 做了异基因移植<br>用的我哥的造血干细胞。移植过程中一切顺利，但后面排异的话就有点严重了（悲）<br>好难受的说。。。<br>皮排，肠排，眼排轮番上阵，人都麻了<br>当时搞了好久，住了50多天院才出来<br>结果出院不到两个星期 我又因为肝转氨酶飙升住院治疗（瘫）<br>只能说，不堪回首（捂脸）<br>现在还好，已经基本上好了<br>然后就是慢慢休养 慢慢康复</p>
+<h2 id="娱乐"><a href="#娱乐" class="headerlink" title="娱乐"></a>娱乐</h2><p>今年由于边上学边治疗 时间宽松了些<br>我尝试了许多新东西！<br>看了挺多小说 游戏也玩了些 同时也折腾了蛮多新东西<br>挺惬意的</p>
+<p>小说的话看了</p>
+<ul>
+<li><strong>《异常生物见闻录》《黎明之剑》</strong> 两本都是佳作</li>
+<li><strong>《我在精神病院学斩神》《开局摆摊卖大力》《我一个史莱姆吊打巨龙很合理吧？》</strong> 这几本番茄神作（？ 反正我看得挺开心的</li>
+<li><strong>《诡秘之主》</strong> <span class="heimu" title="可恶！居然被你发现了！￣へ￣">赞美愚者！</span></li>
+<li><strong>《我的治愈系游戏》《我有一座恐怖屋》</strong> <span class="heimu" title="可恶！居然被你发现了！￣へ￣">好看好看，快去看</span> </li>
+<li><strong>《最强反套路系统》《我修的可能是假仙》《亏成首富从游戏开始》《成为圣人是一种什么体验？》《仙王的日常生活》《这游戏也太真实了》</strong><span class="heimu" title="可恶！居然被你发现了！￣へ￣">都不知道是几刷了</span></li>
+</ul>
+<p>入坑了 <strong>《原神》《崩坏：星穹铁道》《重返未来：1999》</strong> 都挺不错的</p>
+<p>23年折腾的东西就多了</p>
+<ul>
+<li>整了个 QQBot <strong>望舒</strong> 用的是Mirai+大佬写的插件拼拼凑凑整的</li>
+<li>搭了<strong>论坛、Minecraft皮肤站、搜索引擎、免翻ChatGPT、免翻NewBing、静态博客、RSSHub、第三方网易云音乐</strong> <span class="heimu" title="可恶！居然被你发现了！￣へ￣">虽说搭了这么多但是还活着的没剩几个了（</span> </li>
+<li>复活了 Minecraft服务器 <strong>昕夕亭</strong></li>
+</ul>
+<p>然后。。。就没有然后了，这篇年度总结也到了最后了 <span class="heimu" title="可恶！居然被你发现了！￣へ￣">想氵也氵不出来了</span><br>那就<br>希望我2024能越来越好！<br>希望愿望都能实现！<br>加油！</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>年终总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS7安装neofetch</title>
+    <url>/posts/36696.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><div class="note info modern"><p>记录一下，万一以后忘了呢</p>
+</div>
+
+<hr>
+<p>CentOS7自带软件源内并无<code>neofetch</code>，我们需要手动添加软件源，</p>
+<blockquote>
+<p>所有操作系统自带软件源内无此软件的，安装步骤大致为：添加软件源、导入密钥、刷新包管理器缓存、使用包管理器安装该软件</p>
+</blockquote>
+<h2 id="安装-epel-release"><a href="#安装-epel-release" class="headerlink" title="安装 epel-release"></a>安装 epel-release</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> epel-release<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="添加第三方软件源"><a href="#添加第三方软件源" class="headerlink" title="添加第三方软件源"></a>添加第三方软件源</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">curl</span> <span class="token parameter variable">-o</span> /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="使用包管理器安装-neofetch"><a href="#使用包管理器安装-neofetch" class="headerlink" title="使用包管理器安装 neofetch"></a>使用包管理器安装 neofetch</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> neofetch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="安装成功！"><a href="#安装成功！" class="headerlink" title="安装成功！"></a>安装成功！</h2><p><img src="https://pic.qiusyan.top/img/20230713162746.png" alt="安装成功"></p>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>青春不散场</title>
+    <url>/posts/8073.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><blockquote>
+<p>我的语言表达能力在去年一整年治病养病中已基本退化，说的话可能没有什么逻辑，请见谅。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<p>2019.9.1 – 2023.6.20</p>
+<p>我的初中生涯结束了。</p>
+<p>时间过得真快啊。</p>
+<hr>
+<p>很高兴，我在这几年间认识了很多朋友，他们在我记忆中留下了不可磨灭的印记。</p>
+<p>谢谢你们。</p>
+<p>谢谢C402和C420的所有人。</p>
+<hr>
+<p>我们相逢于二中，却又离别于二中。</p>
+<p>我们的人生轨迹在此刻开始基本成型。</p>
+<p>但是那又怎么样？</p>
+<p><strong>“海内存知己，天涯若比邻。无为在歧路，儿女共沾巾。”</strong></p>
+<p>只要我们仍是朋友，无论天涯海角，我们都会在一起。</p>
+<p>路还长着呢，一切皆有可能。</p>
+<hr>
+<p><strong>青春不散场，我们永远在一起。</strong></p>
+<p><strong>祝2023届中考生都能考上心仪的高中！</strong></p>
+<p>By QiuSYan</p>
+<p>2023&#x2F;07&#x2F;01</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>给你的Hexo-Butterfly添加Giscus评论系统</title>
+    <url>/posts/61913.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><p>记录一下配置Giscus评论系统的过程</p>
+
+    <div id="aplayer-sbElzgFC" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1888864514" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
+    ></div>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>由 <a href="https://docs.github.com/en/discussions">GitHub Discussions</a> 驱动的评论系统。让访客借助 GitHub 在你的网站上留下评论和反应吧！本项目受 <a href="https://github.com/utterance/utterances">utterances</a> 强烈启发。</p>
+<ul>
+<li><a href="https://github.com/giscus/giscus">开源</a>。🌏</li>
+<li>无跟踪，无广告，永久免费。📡 🚫</li>
+<li>无需数据库。全部数据均储存在 GitHub Discussions 中。</li>
+<li>支持<a href="https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#data-theme">自定义主题</a>！🌗</li>
+<li>支持<a href="https://github.com/giscus/giscus/blob/main/CONTRIBUTING.md#adding-localizations">多种语言</a>。🌐</li>
+<li><a href="https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md">高度可配置</a>。🔧</li>
+<li>自动从 GitHub 拉取新评论与编辑。🔃</li>
+<li><a href="https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md">可自建服务</a>！🤳</li>
+</ul>
+</blockquote>
+<p>详细介绍请看 <a href="https://giscus.app/zh-CN">Giscus官网</a>。</p>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>名称随意。</p>
+<p><img src="/img/new-repo.png" alt="创建新仓库"></p>
+<h3 id="安装Giscus"><a href="#安装Giscus" class="headerlink" title="安装Giscus"></a>安装Giscus</h3><p>点击此链接安装：<a href="https://github.com/apps/giscus">Github Apps - giscus</a></p>
+<p><img src="/img/install-giscus.png" alt="点击安装"></p>
+<p><img src="/img/install-giscus-2.png" alt="选择要安装的仓库"></p>
+<p>在这里，你可以选安装到全局也可以选择安装到某一个仓库（这个其实无所谓，后面可以改</p>
+<p>然后点击 <strong>Install</strong> 安装</p>
+<h3 id="配置仓库Discuss部分"><a href="#配置仓库Discuss部分" class="headerlink" title="配置仓库Discuss部分"></a>配置仓库Discuss部分</h3><p>打开你的仓库链接，点击 <strong>Settings</strong></p>
+<p><img src="/img/config-giscus-1.png" alt="点击 Settings"></p>
+<p><img src="/img/config-giscus-2.png" alt="用Ctrl+F寻找"><br>找到<strong>Discussion</strong>后，将方框勾选即可。<br><img src="/img/config-giscus-3.png" alt="勾选完毕"></p>
+<p>随后点击 <strong>Set up discussions</strong>，进入Discussions配置界面。</p>
+<p><img src="/img/config-giscus-4.png" alt="创建Announcements板块"></p>
+<p>点击 <strong>Start discussion</strong>即可。</p>
+<p><img src="/img/config-giscus-5.png" alt="好耶撒花！"></p>
+<h3 id="进入Giscus配置"><a href="#进入Giscus配置" class="headerlink" title="进入Giscus配置"></a>进入Giscus配置</h3><p>传送门：<a href="https://giscus.app/zh-CN">Giscus官网</a><br>找到此处，在输入框内填写你的仓库信息，格式 <code>myusername/myrepo</code><br><img src="/img/giscus1.png" alt="在这里填写"><br><img src="/img/giscus2.png" alt="成功"></p>
+<p>然后将 <code>页面 ↔️ discussion 映射关系</code>处的选项改为<code>Discussion 的标题包含页面的 URL</code><br><img src="/img/giscus3.png" alt="如图所示"><br>分类则选择刚刚创建的<strong>Announcements</strong><br><img src="/img/giscus4.png" alt="选择分类"></p>
+<p>配置完上述部分后，可以在<strong>启动giscus</strong>处复制几个必要的值</p>
+<p><img src="/img/giscus5.png" alt="如图所示"></p>
+<p>将上一步复制的数值填到butterfly主题配置文件即可</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Giscus</span>
+<span class="token comment"># https://giscus.app/</span>
+<span class="token key atrule">giscus</span><span class="token punctuation">:</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span>
+  <span class="token key atrule">repo_id</span><span class="token punctuation">:</span>
+  <span class="token key atrule">category_id</span><span class="token punctuation">:</span>
+  <span class="token key atrule">theme</span><span class="token punctuation">:</span>
+    <span class="token key atrule">light</span><span class="token punctuation">:</span> light
+    <span class="token key atrule">dark</span><span class="token punctuation">:</span> dark
+  option<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意！</strong></p>
+<ul>
+<li>请将<strong>启用giscus</strong>处复制的<code>data-repo</code>的值粘贴至<strong>butterfly</strong>主题配置文件中的<code>repo</code>处；</li>
+<li>将<code>data-repo-id</code>处复制的值粘贴值配置文件中的<code>repo-id</code>处；</li>
+<li>将<code>data-category-id</code>处复制的值粘贴至配置文件中的<code>category-id</code>处。</li>
+</ul>
+<div class="note warning modern"><p>复制的值不需要引号</p>
+</div>
+
+
+<h2 id="完成！"><a href="#完成！" class="headerlink" title="完成！"></a>完成！</h2><p>配置完并且保存后，通过<code>hexo s</code>就能看到你的评论区啦<br><img src="/img/giscus-over.png" alt="大功告成！"></p>
+<hr>
+<p><strong>有任何疑问欢迎留言！💖</strong></p>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Giscus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>致我的十五岁</title>
+    <url>/posts/7224.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><blockquote>
+<p>致我的十五岁。</p>
+</blockquote>
+<span id="more"></span>
+
+
+<p>第十五年。<br>与这个世界交手的第十五年。<br>感受世界万物美好的第十五年；<br>品尝生活酸甜苦辣的第十五年；<br>体验过喜怒哀乐惧的第十五年。<br>第十五年，我曾奔波与医院与家中；<br>第十五年，我曾枯坐于书桌前胡思乱想。<br>第十五年，我有过惊慌失措，也有过无所畏惧；<br>第十五年，我有过斗志昂扬，也有过划水躺平。<br>我会因为在网上交到一个朋友而感到兴奋与激动，也会因许久没有联系的朋友的拉黑屏蔽而感到茫然与失落。<br>我似乎与现实的隔阂越来越大。<br>我仿佛对现实世界的一切都漠不关心。以前感到兴奋是常有的事，现在却是淡然，甚至对一切不理睬的冷漠。<br>今日，除夕，大年三十。<br>今日便会在我人生中第十五年画上一个句号，将过去整整一年的苦难与悲哀埋葬在记忆里面。<br>第十五年。<br>祝我自己生日快乐！<br>希望新的一年越来越好！</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>十五岁</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typecho 便捷式更改 评论Gravatar头像源</title>
+    <url>/posts/13132.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><blockquote>
+<p><strong>Cravatar 是 Gravatar 在中国的完美替代品。</strong> </p>
+</blockquote>
+<hr>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>将以下代码加到站点根目录的 config.inc.php 中即可：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">/**
+ * 替换Gravatar头像为Cravatar头像
+ *
+ * Cravatar是Gravatar在中国的完美替代方案，你可以在https://cravatar.cn更新你的头像
+ */</span>
+<span class="token function">define</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'__TYPECHO_GRAVATAR_PREFIX__'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'https://cravatar.cn/avatar/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://cravatar.cn/developers/for-typecho">「 为 Typecho 集成 - Cravatar 」</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Typecho</tag>
+        <tag>Cravatar</tag>
+      </tags>
+  </entry>
+</search>

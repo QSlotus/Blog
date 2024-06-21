@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>QiuSYan&#39;s Blog</title>
+  <icon>https://blog.qiusyan.top/icon.png</icon>
+  
+  <link href="https://blog.qiusyan.top/atom.xml" rel="self"/>
+  
+  <link href="https://blog.qiusyan.top/"/>
+  <updated>2024-06-21T11:56:23.452Z</updated>
+  <id>https://blog.qiusyan.top/</id>
+  
+  <author>
+    <name>QiuSYan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单相思</title>
+    <link href="https://blog.qiusyan.top/posts/29930.html"/>
+    <id>https://blog.qiusyan.top/posts/29930.html</id>
+    <published>2024-04-12T09:59:03.000Z</published>
+    <updated>2024-06-21T11:56:23.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="碎碎念" scheme="https://blog.qiusyan.top/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+    <category term="碎碎念" scheme="https://blog.qiusyan.top/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu重装记录</title>
+    <link href="https://blog.qiusyan.top/posts/22765.html"/>
+    <id>https://blog.qiusyan.top/posts/22765.html</id>
+    <published>2024-03-24T09:41:48.000Z</published>
+    <updated>2024-06-21T11:56:23.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Ubuntu" scheme="https://blog.qiusyan.top/tags/Ubuntu/"/>
+    
+    <category term="重装" scheme="https://blog.qiusyan.top/tags/%E9%87%8D%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pixiv图片代理自建</title>
+    <link href="https://blog.qiusyan.top/posts/22066.html"/>
+    <id>https://blog.qiusyan.top/posts/22066.html</id>
+    <published>2024-03-17T03:24:04.000Z</published>
+    <updated>2024-03-17T12:24:04.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Pixiv" scheme="https://blog.qiusyan.top/tags/Pixiv/"/>
+    
+    <category term="CloudFlare Workers" scheme="https://blog.qiusyan.top/tags/CloudFlare-Workers/"/>
+    
+    <category term="Vercel" scheme="https://blog.qiusyan.top/tags/Vercel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言学习笔记</title>
+    <link href="https://blog.qiusyan.top/posts/2620.html"/>
+    <id>https://blog.qiusyan.top/posts/2620.html</id>
+    <published>2024-03-10T04:00:02.000Z</published>
+    <updated>2024-06-21T11:56:23.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="C" scheme="https://blog.qiusyan.top/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给你的Hexo-Butterfly加入说说功能</title>
+    <link href="https://blog.qiusyan.top/posts/48887.html"/>
+    <id>https://blog.qiusyan.top/posts/48887.html</id>
+    <published>2024-03-07T11:12:22.000Z</published>
+    <updated>2024-03-10T11:12:22.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.qiusyan.top/tags/Hexo/"/>
+    
+    <category term="HexoPlusPlus" scheme="https://blog.qiusyan.top/tags/HexoPlusPlus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows下简易Hexo部署教程</title>
+    <link href="https://blog.qiusyan.top/posts/62801.html"/>
+    <id>https://blog.qiusyan.top/posts/62801.html</id>
+    <published>2024-03-07T02:33:57.000Z</published>
+    <updated>2024-03-08T02:33:57.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.qiusyan.top/tags/Hexo/"/>
+    
+    <category term="Netlify" scheme="https://blog.qiusyan.top/tags/Netlify/"/>
+    
+    <category term="Github Actions" scheme="https://blog.qiusyan.top/tags/Github-Actions/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Win11下WSL2配置记录</title>
+    <link href="https://blog.qiusyan.top/posts/3676.html"/>
+    <id>https://blog.qiusyan.top/posts/3676.html</id>
+    <published>2024-03-02T09:23:48.000Z</published>
+    <updated>2024-03-04T09:23:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Win11" scheme="https://blog.qiusyan.top/tags/Win11/"/>
+    
+    <category term="WSL2" scheme="https://blog.qiusyan.top/tags/WSL2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的2023</title>
+    <link href="https://blog.qiusyan.top/posts/10055.html"/>
+    <id>https://blog.qiusyan.top/posts/10055.html</id>
+    <published>2024-01-17T10:49:00.000Z</published>
+    <updated>2024-01-17T10:49:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;时间过的好快啊。不知不觉间一年又过去了。&lt;br&gt;这篇年度总结我本来都不准备写了（鸽子精附体&lt;br&gt;但是想来想去还是写一篇记录一下吧 毕竟我博客复活总不能还是挂着那几篇老文章 也不好看是不是（&lt;br&gt;于是到今天才写了这篇2023年度总结（咕咕咕&lt;br&gt;各位将就看看吧 我太久没写东西了基本语言逻辑 表述方面啥的可能都有点问题 就这样&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="日常" scheme="https://blog.qiusyan.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="年终总结" scheme="https://blog.qiusyan.top/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS7安装neofetch</title>
+    <link href="https://blog.qiusyan.top/posts/36696.html"/>
+    <id>https://blog.qiusyan.top/posts/36696.html</id>
+    <published>2023-07-12T01:44:46.000Z</published>
+    <updated>2023-07-12T01:44:46.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="CentOS" scheme="https://blog.qiusyan.top/tags/CentOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>青春不散场</title>
+    <link href="https://blog.qiusyan.top/posts/8073.html"/>
+    <id>https://blog.qiusyan.top/posts/8073.html</id>
+    <published>2023-06-21T12:57:00.000Z</published>
+    <updated>2023-06-21T12:57:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;我的语言表达能力在去年一整年治病养病中已基本退化，说的话可能没有什么逻辑，请见谅。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="日常" scheme="https://blog.qiusyan.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>给你的Hexo-Butterfly添加Giscus评论系统</title>
+    <link href="https://blog.qiusyan.top/posts/61913.html"/>
+    <id>https://blog.qiusyan.top/posts/61913.html</id>
+    <published>2023-04-21T12:00:16.000Z</published>
+    <updated>2023-04-21T12:00:16.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.qiusyan.top/tags/Hexo/"/>
+    
+    <category term="Giscus" scheme="https://blog.qiusyan.top/tags/Giscus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>致我的十五岁</title>
+    <link href="https://blog.qiusyan.top/posts/7224.html"/>
+    <id>https://blog.qiusyan.top/posts/7224.html</id>
+    <published>2023-01-21T10:25:00.000Z</published>
+    <updated>2023-01-21T10:25:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;致我的十五岁。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="日常" scheme="https://blog.qiusyan.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="十五岁" scheme="https://blog.qiusyan.top/tags/%E5%8D%81%E4%BA%94%E5%B2%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Typecho 便捷式更改 评论Gravatar头像源</title>
+    <link href="https://blog.qiusyan.top/posts/13132.html"/>
+    <id>https://blog.qiusyan.top/posts/13132.html</id>
+    <published>2022-12-23T00:54:38.000Z</published>
+    <updated>2022-12-23T00:54:38.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://blog.qiusyan.top/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Typecho" scheme="https://blog.qiusyan.top/tags/Typecho/"/>
+    
+    <category term="Cravatar" scheme="https://blog.qiusyan.top/tags/Cravatar/"/>
+    
+  </entry>
+  
+</feed>
