@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /post/25333
+Disallow: /post/25333.html
+
