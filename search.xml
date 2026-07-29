@@ -414,40 +414,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS7安装neofetch</title>
-    <url>/posts/36696.html</url>
-    <content><![CDATA[
-  <div class="note p-4 mb-4 rounded-small info modern">
-    <p>记录一下，万一以后忘了呢</p>
-
-  </div>
-
-<hr>
-<p>CentOS7自带软件源内并无<code>neofetch</code>，我们需要手动添加软件源，</p>
-<blockquote>
-<p>所有操作系统自带软件源内无此软件的，安装步骤大致为：添加软件源、导入密钥、刷新包管理器缓存、使用包管理器安装该软件</p>
-</blockquote>
-<h2 id="安装-epel-release"><a href="#安装-epel-release" class="headerlink" title="安装 epel-release"></a>安装 epel-release</h2><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="添加第三方软件源"><a href="#添加第三方软件源" class="headerlink" title="添加第三方软件源"></a>添加第三方软件源</h2><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="使用包管理器安装-neofetch"><a href="#使用包管理器安装-neofetch" class="headerlink" title="使用包管理器安装 neofetch"></a>使用包管理器安装 neofetch</h2><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install neofetch</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="安装成功！"><a href="#安装成功！" class="headerlink" title="安装成功！"></a>安装成功！</h2><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic.qiusyan.top/img/20230713162746.png"
-                      alt="安装成功"
-                ></p>
-]]></content>
-      <categories>
-        <category>学习记录</category>
-      </categories>
-      <tags>
-        <tag>CentOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言学习笔记</title>
     <url>/posts/2620.html</url>
     <content><![CDATA[
@@ -877,6 +843,40 @@ int main()&#123;
       </categories>
       <tags>
         <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS7安装neofetch</title>
+    <url>/posts/36696.html</url>
+    <content><![CDATA[
+  <div class="note p-4 mb-4 rounded-small info modern">
+    <p>记录一下，万一以后忘了呢</p>
+
+  </div>
+
+<hr>
+<p>CentOS7自带软件源内并无<code>neofetch</code>，我们需要手动添加软件源，</p>
+<blockquote>
+<p>所有操作系统自带软件源内无此软件的，安装步骤大致为：添加软件源、导入密钥、刷新包管理器缓存、使用包管理器安装该软件</p>
+</blockquote>
+<h2 id="安装-epel-release"><a href="#安装-epel-release" class="headerlink" title="安装 epel-release"></a>安装 epel-release</h2><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install epel-release</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="添加第三方软件源"><a href="#添加第三方软件源" class="headerlink" title="添加第三方软件源"></a>添加第三方软件源</h2><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="使用包管理器安装-neofetch"><a href="#使用包管理器安装-neofetch" class="headerlink" title="使用包管理器安装 neofetch"></a>使用包管理器安装 neofetch</h2><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install neofetch</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="安装成功！"><a href="#安装成功！" class="headerlink" title="安装成功！"></a>安装成功！</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://pic.qiusyan.top/img/20230713162746.png"
+                      alt="安装成功"
+                ></p>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
