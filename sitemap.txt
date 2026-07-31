@@ -11,6 +11,7 @@ https://blog.qiusyan.top/posts/8093.html
 https://blog.qiusyan.top/posts/2620.html
 https://blog.qiusyan.top/posts/27098.html
 https://blog.qiusyan.top/posts/34744.html
+https://blog.qiusyan.top/posts/39482.html
 https://blog.qiusyan.top/posts/23909.html
 https://blog.qiusyan.top/posts/29947.html
 https://blog.qiusyan.top/posts/21658.html
@@ -41,9 +42,9 @@ https://blog.qiusyan.top/tags/Blessing-Skin/
 https://blog.qiusyan.top/tags/Minecraft%E7%9A%AE%E8%82%A4%E7%AB%99/
 https://blog.qiusyan.top/tags/%E4%B8%90%E7%89%88%E6%9C%8D%E5%8A%A1%E5%99%A8/
 https://blog.qiusyan.top/tags/C/
-https://blog.qiusyan.top/tags/CentOS/
 https://blog.qiusyan.top/tags/Typecho/
 https://blog.qiusyan.top/tags/Cravatar/
+https://blog.qiusyan.top/tags/CentOS/
 https://blog.qiusyan.top/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/
 https://blog.qiusyan.top/tags/flarum/
 https://blog.qiusyan.top/tags/TiDB/
@@ -55,6 +56,8 @@ https://blog.qiusyan.top/tags/HexoPlusPlus/
 https://blog.qiusyan.top/tags/Cursor/
 https://blog.qiusyan.top/tags/%E7%99%BD%E5%AB%96/
 https://blog.qiusyan.top/tags/%E8%87%AA%E5%BB%BA/
+https://blog.qiusyan.top/tags/12%EF%BC%9A3456/
+https://blog.qiusyan.top/tags/LunarCore/
 https://blog.qiusyan.top/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/
 https://blog.qiusyan.top/tags/Pixiv/
 https://blog.qiusyan.top/tags/CloudFlare-Workers/
